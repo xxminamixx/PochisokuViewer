@@ -24,6 +24,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // NavigationBarのタイトル設定
+        self.navigationItem.title = "記事一覧"
+        
         // TableViewDelegateの設定
         tableView.delegate = self
         tableView.dataSource = self
@@ -51,6 +55,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         // ページタイトルをセルにセット
         cell.title.text = relatedArticleList[indexPath.row].title
         // TODO: サムネイルをセット
+        ImageFetcher.articleImage(cell: cell, url: relatedArticleList[indexPath.row].image)
+        
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         

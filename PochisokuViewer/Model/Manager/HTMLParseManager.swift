@@ -30,8 +30,8 @@ class HTMLParseManager {
             
             // タイトルに改行文字が含まれていたので削除
             var h3 = title![i].content!
-            h3 = h3.replacingOccurrences(of: "/t", with: "")
-            h3 = h3.replacingOccurrences(of: "/n", with: "")
+            h3 = h3.replacingOccurrences(of: "\t", with: "")
+            h3 = h3.replacingOccurrences(of: "\n", with: "")
             
             let article = ArticleEntity(_url: kanrenURL![i].attributes["href"]!, _title: h3, _image: image![i].attributes["src"]!)
             
