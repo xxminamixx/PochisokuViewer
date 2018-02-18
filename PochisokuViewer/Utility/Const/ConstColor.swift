@@ -9,6 +9,6 @@
 import UIKit
 
 struct ConstColor {
-    /* #e24141 */
-    static let red = UIColor(red: 0.8863, green: 0.2549, blue: 0.2549, alpha: 1.0)
+    /* #f494b9 */
+    static let iconPink = UIColor(red: 0.9569, green: 0.5804, blue: 0.7255, alpha: 1.0)
 }
