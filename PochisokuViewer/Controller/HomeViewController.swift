@@ -16,14 +16,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // 関連記事のリスト
-    var relatedArticleList: [ArticleEntity] {
-        get {
-            return HTMLParseManager.relatedArticleEntityList()
-        }
-    }
+    var relatedArticleList: [ArticleEntity] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        relatedArticleList = HTMLParseManager.relatedArticleEntityList()
         
         // NavigationBarのタイトル設定
         self.navigationItem.title = "記事一覧"
@@ -74,6 +72,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height) {
+            // 皿読み処理
+            relatedArticleList =  relatedArticleList + HTMLParseManager.addRelatedArticleEntityList()
+            tableView.reloadData()
+        }
     }
     
 }
