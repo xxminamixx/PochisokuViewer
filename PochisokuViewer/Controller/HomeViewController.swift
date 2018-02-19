@@ -15,13 +15,17 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    // 新規記事取得時のインジケータに使用
+    private let refreshControl = UIRefreshControl()
+    
     // 関連記事のリスト
     var relatedArticleList: [ArticleEntity] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        relatedArticleList = HTMLParseManager.relatedArticleEntityList()
+        // 記事一覧を取得
+        relatedArticleList = HTMLParseManager.relatedArticleEntityList({})
         
         // NavigationBarのタイトル設定
         self.navigationItem.title = "記事一覧"
@@ -29,6 +33,9 @@ class HomeViewController: UIViewController {
         // TableViewDelegateの設定
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(HomeViewController.refresh(sender:)), for: .valueChanged)
         
         // TableViewにセルの登録
         tableView.register(UINib(nibName: ArticleTableViewCell.id, bundle: nil), forCellReuseIdentifier: ArticleTableViewCell.id)
@@ -38,6 +45,19 @@ class HomeViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
+    }
+    
+    
+    /// TableViewを上に引っ張りバウンスさせたときの処理
+    ///
+    /// - Parameter sender: UIControl
+    @objc func refresh(sender: UIControl) {
+        relatedArticleList = HTMLParseManager.relatedArticleEntityList({
+            // フェッチが終わったらテーブルビューを更新
+            tableView.reloadData()
+            // インジケータ表示を終了
+            refreshControl.endRefreshing()
+        })
     }
 
 }

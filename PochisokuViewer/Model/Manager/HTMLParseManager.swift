@@ -17,7 +17,7 @@ class HTMLParseManager {
     /// 関連記事のEntityListを作成し返却
     ///
     /// - Returns: ArticleEntity配列を返却
-    static func relatedArticleEntityList() -> [ArticleEntity] {
+    static func relatedArticleEntityList(_ completion: () -> Void) -> [ArticleEntity] {
         // ページのリクエスト
         let pochisokuJi = Ji(htmlURL: URL(string: ConstText.pochisokuURL)!)
         // 関連記事のURLを含むタグ情報(これからhref値を抜き取りたい)
@@ -40,6 +40,7 @@ class HTMLParseManager {
             articleList.append(article)
         }
         
+        completion()
         return articleList
     }
     
