@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 import NVActivityIndicatorView
+import PopupDialog
 
 class WebViewController: UIViewController {
     
@@ -61,9 +62,23 @@ extension WebViewController: WKNavigationDelegate {
         indicator?.stopAnimating()
     }
     
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         // エラー発生
         indicator?.stopAnimating()
         // TODO: ポップアップを表示して再読み込みを促す
+        
+        let popup = PopupDialog(title: "読み込みに失敗しました", message: "通信環境をご確認の上再度お試しください")
+        
+        let reloadButton = DefaultButton(title: "再取得", dismissOnTap: true) {
+            // 再度通信開始
+            webView.load(self.request!)
+        }
+        
+        let cancelButton = CancelButton(title: "とじる") {
+            // ダイアログを閉じるだけなので特に処理なし
+        }
+        
+        popup.addButtons([reloadButton, cancelButton])
+        self.present(popup, animated: true, completion: nil)
     }
 }

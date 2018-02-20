@@ -9,5 +9,6 @@ target 'PochisokuViewer' do
   pod 'Ji', '~> 2.1.0'
   pod 'AlamofireImage'
   pod 'NVActivityIndicatorView', '~> 4.1.1'
+  pod 'PopupDialog', '~> 0.7'
 
 end
