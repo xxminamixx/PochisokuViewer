@@ -7,16 +7,21 @@ PODS:
   - Ji/Ji (2.1.0):
     - Ji/Ji-libxml
   - Ji/Ji-libxml (2.1.0)
+  - NVActivityIndicatorView (4.1.1):
+    - NVActivityIndicatorView/Presenter (= 4.1.1)
+  - NVActivityIndicatorView/Presenter (4.1.1)
 
 DEPENDENCIES:
   - AlamofireImage
   - Ji (~> 2.1.0)
+  - NVActivityIndicatorView (~> 4.1.1)
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
   Ji: 21946da4e13425485ddd424edfaeeced0d80ad28
+  NVActivityIndicatorView: 60109b9bf46efc2e71ab81453196ccdfdfeea870
 
-PODFILE CHECKSUM: 0c67a9c71fc87f92a57467420d173bb771c4a3e7
+PODFILE CHECKSUM: 4bfa9585e6d758d1eb9651b9685ecf8be33633a8
 
 COCOAPODS: 1.3.0

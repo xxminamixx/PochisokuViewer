@@ -8,5 +8,6 @@ target 'PochisokuViewer' do
   # Pods for PochisokuViewer
   pod 'Ji', '~> 2.1.0'
   pod 'AlamofireImage'
+  pod 'NVActivityIndicatorView', '~> 4.1.1'
 
 end

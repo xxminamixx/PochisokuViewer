@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 import Ji
+import NVActivityIndicatorView
 
 class HomeViewController: UIViewController {
     
