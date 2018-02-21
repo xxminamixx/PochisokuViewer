@@ -10,6 +10,11 @@
 		6A63C16320382F99000DF18C /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C16220382F99000DF18C /* ImageFetcher.swift */; };
 		6A63C16520389807000DF18C /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C16420389807000DF18C /* NavigationController.swift */; };
 		6A63C16720389918000DF18C /* ConstColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C16620389918000DF18C /* ConstColor.swift */; };
+		6A63C169203CF237000DF18C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C168203CF237000DF18C /* HistoryViewController.swift */; };
+		6A63C16B203CF403000DF18C /* HistoryArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C16A203CF403000DF18C /* HistoryArticleManager.swift */; };
+		6A63C16D203CFBC9000DF18C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C16C203CFBC8000DF18C /* TabBarViewController.swift */; };
+		6A63C170203CFCE9000DF18C /* NoDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C16E203CFCE9000DF18C /* NoDataTableViewCell.swift */; };
+		6A63C171203CFCE9000DF18C /* NoDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A63C16F203CFCE9000DF18C /* NoDataTableViewCell.xib */; };
 		9D478799203690D200A0957C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D478798203690D200A0957C /* AppDelegate.swift */; };
 		9D47879B203690D200A0957C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47879A203690D200A0957C /* HomeViewController.swift */; };
 		9D47879E203690D200A0957C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D47879C203690D200A0957C /* Main.storyboard */; };
@@ -29,6 +34,11 @@
 		6A63C16220382F99000DF18C /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		6A63C16420389807000DF18C /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		6A63C16620389918000DF18C /* ConstColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstColor.swift; sourceTree = "<group>"; };
+		6A63C168203CF237000DF18C /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		6A63C16A203CF403000DF18C /* HistoryArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryArticleManager.swift; sourceTree = "<group>"; };
+		6A63C16C203CFBC8000DF18C /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		6A63C16E203CFCE9000DF18C /* NoDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataTableViewCell.swift; sourceTree = "<group>"; };
+		6A63C16F203CFCE9000DF18C /* NoDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoDataTableViewCell.xib; sourceTree = "<group>"; };
 		9D478795203690D200A0957C /* PochisokuViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PochisokuViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D478798203690D200A0957C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D47879A203690D200A0957C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -118,9 +128,11 @@
 		9D4787AA203691FA00A0957C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6A63C16C203CFBC8000DF18C /* TabBarViewController.swift */,
 				6A63C16420389807000DF18C /* NavigationController.swift */,
 				9D47879A203690D200A0957C /* HomeViewController.swift */,
 				9D5B7A5B2036D23100917F17 /* WebViewController.swift */,
+				6A63C168203CF237000DF18C /* HistoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -132,6 +144,8 @@
 				9D47879C203690D200A0957C /* Main.storyboard */,
 				9D5B7A552036CC3500917F17 /* ArticleTableViewCell.swift */,
 				9D5B7A562036CC3500917F17 /* ArticleTableViewCell.xib */,
+				6A63C16E203CFCE9000DF18C /* NoDataTableViewCell.swift */,
+				6A63C16F203CFCE9000DF18C /* NoDataTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5B7A592036CF2300917F17 /* HTMLParseManager.swift */,
+				6A63C16A203CF403000DF18C /* HistoryArticleManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -237,6 +252,7 @@
 				9D4787A3203690D200A0957C /* LaunchScreen.storyboard in Resources */,
 				9D4787A0203690D200A0957C /* Assets.xcassets in Resources */,
 				9D47879E203690D200A0957C /* Main.storyboard in Resources */,
+				6A63C171203CFCE9000DF18C /* NoDataTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,11 +330,15 @@
 				9D5B7A572036CC3500917F17 /* ArticleTableViewCell.swift in Sources */,
 				6A63C16720389918000DF18C /* ConstColor.swift in Sources */,
 				6A63C16320382F99000DF18C /* ImageFetcher.swift in Sources */,
+				6A63C16B203CF403000DF18C /* HistoryArticleManager.swift in Sources */,
 				9D47879B203690D200A0957C /* HomeViewController.swift in Sources */,
 				9D5B7A5A2036CF2300917F17 /* HTMLParseManager.swift in Sources */,
+				6A63C169203CF237000DF18C /* HistoryViewController.swift in Sources */,
 				9D4787AF2036921E00A0957C /* ConstText.swift in Sources */,
 				9D5B7A5C2036D23100917F17 /* WebViewController.swift in Sources */,
 				9D478799203690D200A0957C /* AppDelegate.swift in Sources */,
+				6A63C170203CFCE9000DF18C /* NoDataTableViewCell.swift in Sources */,
+				6A63C16D203CFBC9000DF18C /* TabBarViewController.swift in Sources */,
 				6A63C16520389807000DF18C /* NavigationController.swift in Sources */,
 				9D5B7A542036C88800917F17 /* ArticleEntity.swift in Sources */,
 			);

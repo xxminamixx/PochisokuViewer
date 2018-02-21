@@ -83,7 +83,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let url = URL(string: relatedArticleList[indexPath.row].url)
+        let selectedEntity = relatedArticleList[indexPath.row]
+        
+        // 選択した記事を履歴管理用の配列に格納
+        HistoryArticleManager.HistoryArticleList.append(selectedEntity)
+        
+        let url = URL(string: selectedEntity.url)
         let request = URLRequest(url: url!)
         let webViewController = storyboard?.instantiateViewController(withIdentifier: WebViewController.id) as! WebViewController
         webViewController.request = request
