@@ -14,8 +14,8 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
 
         // 背景色を設定
-        self.tabBar.barTintColor = ConstColor.iconPink
-        self.tabBar.tintColor = UIColor.white
+        self.tabBar.barTintColor = UIColor.white
+        self.tabBar.tintColor = ConstColor.iconPink
     }
 
     override func didReceiveMemoryWarning() {
