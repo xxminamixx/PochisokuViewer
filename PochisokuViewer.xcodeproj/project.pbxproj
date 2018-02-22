@@ -49,7 +49,7 @@
 		9D4787A2203690D200A0957C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D4787A4203690D200A0957C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D4787AE2036921E00A0957C /* ConstText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstText.swift; sourceTree = "<group>"; };
-		9D5B7A532036C88800917F17 /* ArticleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ArticleEntity.swift; path = Manager/ArticleEntity.swift; sourceTree = "<group>"; };
+		9D5B7A532036C88800917F17 /* ArticleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleEntity.swift; sourceTree = "<group>"; };
 		9D5B7A552036CC3500917F17 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		9D5B7A562036CC3500917F17 /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
 		9D5B7A592036CF2300917F17 /* HTMLParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLParseManager.swift; sourceTree = "<group>"; };
@@ -95,6 +95,14 @@
 			path = Fetcher;
 			sourceTree = "<group>";
 		};
+		6A63C174203EDC92000DF18C /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				9D5B7A532036C88800917F17 /* ArticleEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		9D47878C203690D200A0957C = {
 			isa = PBXGroup;
 			children = (
@@ -116,11 +124,11 @@
 		9D478797203690D200A0957C /* PochisokuViewer */ = {
 			isa = PBXGroup;
 			children = (
-				9D4787B0203693BF00A0957C /* Model */,
 				9D478798203690D200A0957C /* AppDelegate.swift */,
-				9D4787AC2036920400A0957C /* Utility */,
+				9D4787B0203693BF00A0957C /* Model */,
 				9D4787AB203691FF00A0957C /* View */,
 				9D4787AA203691FA00A0957C /* Controller */,
+				9D4787AC2036920400A0957C /* Utility */,
 				9D47879F203690D200A0957C /* Assets.xcassets */,
 				9D4787A4203690D200A0957C /* Info.plist */,
 			);
@@ -174,7 +182,7 @@
 			children = (
 				6A63C16120382F34000DF18C /* Fetcher */,
 				9D4787B1203693C300A0957C /* Manager */,
-				9D5B7A532036C88800917F17 /* ArticleEntity.swift */,
+				6A63C174203EDC92000DF18C /* Entity */,
 			);
 			path = Model;
 			sourceTree = "<group>";
