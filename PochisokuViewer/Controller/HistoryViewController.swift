@@ -15,7 +15,7 @@ class HistoryViewController: UIViewController {
         super.viewDidLoad()
         
         // NavigationBarのタイトル設定
-        self.navigationItem.title = "閲覧履歴"
+        self.navigationItem.title = ConstText.historyTitle
         
         // TableViewのデリゲート設定
         tableView.delegate = self
@@ -89,14 +89,6 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height) {
-//            // 皿読み処理
-//            relatedArticleList =  relatedArticleList + HTMLParseManager.addRelatedArticleEntityList()
-//            tableView.reloadData()
-//        }
     }
     
 }

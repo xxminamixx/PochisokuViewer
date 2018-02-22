@@ -18,14 +18,39 @@ class HTMLParseManager {
     ///
     /// - Returns: ArticleEntity配列を返却
     static func relatedArticleEntityList(_ completion: () -> Void) -> [ArticleEntity] {
+        completion()
+        return HTMLParseManager.articleList(url: ConstText.pochisokuURL)
+    }
+    
+    
+    /// 皿読み時に次のページの記事を返す
+    ///
+    /// - Returns: 次のページのArticleEntity配列
+    static func addRelatedArticleEntityList() -> [ArticleEntity] {
+        let currentpageJi = Ji(htmlURL: URL(string: currentPageURL)!)
+        let nextPage = currentpageJi?.xPath("//a[@class='next page-numbers']")
+        let nextPageURL = nextPage![0].attributes["href"] ?? ""
+        
+        // 次の更に読みでどんどん次のページを読み込めるように更新
+        currentPageURL = nextPageURL
+        
+        return HTMLParseManager.articleList(url: nextPageURL)
+    }
+    
+    
+    /// ポチ速URLから記事URL,タイトル,画像を取得しEntity配列をして返す
+    ///
+    /// - Parameter url: スクレイピングを開始するURL
+    /// - Returns: ArticleEntity配列
+    private static func articleList(url: String) -> [ArticleEntity] {
         // ページのリクエスト
-        let pochisokuJi = Ji(htmlURL: URL(string: ConstText.pochisokuURL)!)
+        let pochisokuJi = Ji(htmlURL: URL(string: url)!)
         // 関連記事のURLを含むタグ情報(これからhref値を抜き取りたい)
-        let kanrenURL = pochisokuJi?.xPath("//div[@id='st-magazine']/div/div/dl/a")
+        let kanrenURL = pochisokuJi?.xPath(ConstText.kanrenURLXPath)
         // 関連記事のタイトルを含む情報(これからh3を抜き取りたい)
-        let title = pochisokuJi?.xPath("//div[@id='st-magazine']/div/div/dl/dd/div/div/h3")
+        let title = pochisokuJi?.xPath(ConstText.kanrenTitleXPath)
         // 関連記事のサムネイルURLを含む情報(これからsrc値を抜き取りたい)
-        let image = pochisokuJi?.xPath("//div[@id='st-magazine']/div/div/dl/dt/img")
+        let image = pochisokuJi?.xPath(ConstText.kanrenImageXPath)
         
         var articleList: [ArticleEntity] = []
         
@@ -41,41 +66,6 @@ class HTMLParseManager {
                 
                 articleList.append(article)
             }
-        }
-        
-        
-        
-        completion()
-        return articleList
-    }
-    
-    static func addRelatedArticleEntityList() -> [ArticleEntity] {
-        let currentpageJi = Ji(htmlURL: URL(string: currentPageURL)!)
-        let nextPage = currentpageJi?.xPath("//a[@class='next page-numbers']")
-        let nextPageURL = nextPage![0].attributes["href"] ?? ""
-        let nextPageJi = Ji(htmlURL: URL(string: nextPageURL)!)
-        
-        // 次の更に読みでどんどん次のページを読み込めるように更新
-        currentPageURL = nextPageURL
-        
-        // 関連記事のURLを含むタグ情報(これからhref値を抜き取りたい)
-        let kanrenURL = nextPageJi?.xPath("//div[@id='st-magazine']/div/div/dl/a")
-        // 関連記事のタイトルを含む情報(これからh3を抜き取りたい)
-        let title = nextPageJi?.xPath("//div[@id='st-magazine']/div/div/dl/dd/div/div/h3")
-        // 関連記事のサムネイルURLを含む情報(これからsrc値を抜き取りたい)
-        let image = nextPageJi?.xPath("//div[@id='st-magazine']/div/div/dl/dt/img")
-        
-        var articleList: [ArticleEntity] = []
-        for i in 0 ..< kanrenURL!.count {
-            
-            // タイトルに改行文字が含まれていたので削除
-            var h3 = title![i].content!
-            h3 = h3.replacingOccurrences(of: "\t", with: "")
-            h3 = h3.replacingOccurrences(of: "\n", with: "")
-            
-            let article = ArticleEntity(_url: kanrenURL![i].attributes["href"]!, _title: h3, _image: image![i].attributes["src"]!, _date: Date())
-            
-            articleList.append(article)
         }
         
         return articleList

@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
         relatedArticleList = HTMLParseManager.relatedArticleEntityList({})
         
         // NavigationBarのタイトル設定
-        self.navigationItem.title = "記事一覧"
+        self.navigationItem.title = ConstText.homeTitle
         
         // TableViewDelegateの設定
         tableView.delegate = self
@@ -41,6 +41,13 @@ class HomeViewController: UIViewController {
         // TableViewにセルの登録
         tableView.register(UINib(nibName: ArticleTableViewCell.id, bundle: nil), forCellReuseIdentifier: ArticleTableViewCell.id)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // TableViewの選択状態を解除
+        if let indexPathForSelectedRow = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,14 +99,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(webViewController, animated: true)
         
         // 選択した日付で上書き
-        selectedEntity.date = Date()
+        RealmStoreManager.save {
+            selectedEntity.date = Date()
+        }
         
         // 閲覧した記事を永続化
         RealmStoreManager.addEntity(object: selectedEntity.self)
         
         // 閲覧した記事が50件以上ある場合最古のデータを削除
         if RealmStoreManager.countEntity(type: ArticleEntity.self) > 50 {
-            // TODO: 日付順で一番古いやつを削除
             let deleteObject = RealmStoreManager.entityList(type: ArticleEntity.self).sorted(byKeyPath: "date", ascending: false).last
             RealmStoreManager.delete(object: deleteObject!)
         }
