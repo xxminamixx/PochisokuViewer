@@ -7,17 +7,21 @@
 //
 
 import UIKit
+import RealmSwift
 
-class ArticleEntity {
+class ArticleEntity: Object {
     
-    let url: String
-    let title: String
-    let image: String
+    @objc dynamic var url: String!
+    @objc dynamic var title: String!
+    @objc dynamic var image: String!
+    @objc dynamic var date: Date!
     
-    init(_url: String, _title: String, _image: String) {
+    convenience init(_url: String, _title: String, _image: String, _date: Date) {
+        self.init()
         url = _url
         title = _title
         image = _image
+        date = _date
     }
 
 }

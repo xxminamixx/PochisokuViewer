@@ -84,16 +84,25 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedEntity = relatedArticleList[indexPath.row]
-        
-        // 選択した記事を履歴管理用の配列に格納
-        HistoryArticleManager.HistoryArticleList.append(selectedEntity)
-        
         let url = URL(string: selectedEntity.url)
         let request = URLRequest(url: url!)
         let webViewController = storyboard?.instantiateViewController(withIdentifier: WebViewController.id) as! WebViewController
         webViewController.request = request
         // 画面遷移してWebViewの表示
         self.navigationController?.pushViewController(webViewController, animated: true)
+        
+        // 選択した日付で上書き
+        selectedEntity.date = Date()
+        
+        // 閲覧した記事を永続化
+        RealmStoreManager.addEntity(object: selectedEntity.self)
+        
+        // 閲覧した記事が50件以上ある場合最古のデータを削除
+        if RealmStoreManager.countEntity(type: ArticleEntity.self) > 50 {
+            // TODO: 日付順で一番古いやつを削除
+            let deleteObject = RealmStoreManager.entityList(type: ArticleEntity.self).sorted(byKeyPath: "date", ascending: false).last
+            RealmStoreManager.delete(object: deleteObject!)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -10,5 +10,6 @@ target 'PochisokuViewer' do
   pod 'AlamofireImage'
   pod 'NVActivityIndicatorView', '~> 4.1.1'
   pod 'PopupDialog', '~> 0.7'
+  pod 'RealmSwift', '~> 3.0.2'
 
 end

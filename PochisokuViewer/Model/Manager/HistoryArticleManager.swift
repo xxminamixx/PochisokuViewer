@@ -7,7 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
 
-class HistoryArticleManager {
-    static var HistoryArticleList: [ArticleEntity] = []
+class HistoryArticleManager: Object {
+    static var HistoryArticleList: Results<ArticleEntity>?
 }

@@ -35,7 +35,7 @@ class HTMLParseManager {
             h3 = h3.replacingOccurrences(of: "\t", with: "")
             h3 = h3.replacingOccurrences(of: "\n", with: "")
             
-            let article = ArticleEntity(_url: kanrenURL![i].attributes["href"]!, _title: h3, _image: image![i].attributes["src"]!)
+            let article = ArticleEntity(_url: kanrenURL![i].attributes["href"]!, _title: h3, _image: image![i].attributes["src"]!, _date: Date())
             
             articleList.append(article)
         }
@@ -68,7 +68,7 @@ class HTMLParseManager {
             h3 = h3.replacingOccurrences(of: "\t", with: "")
             h3 = h3.replacingOccurrences(of: "\n", with: "")
             
-            let article = ArticleEntity(_url: kanrenURL![i].attributes["href"]!, _title: h3, _image: image![i].attributes["src"]!)
+            let article = ArticleEntity(_url: kanrenURL![i].attributes["href"]!, _title: h3, _image: image![i].attributes["src"]!, _date: Date())
             
             articleList.append(article)
         }

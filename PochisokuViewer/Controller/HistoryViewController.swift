@@ -27,7 +27,8 @@ class HistoryViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // TODO: 履歴を表示する処理
+        // 永続化したデータを読み込んでおく
+        HistoryArticleManager.HistoryArticleList = RealmStoreManager.entityList(type: ArticleEntity.self).sorted(byKeyPath: "date", ascending: false)
         tableView.reloadData()
     }
 
@@ -41,11 +42,11 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     // 表示するせるの個数を返す
     private func numberOfRowsInSection() -> Int {
-        if HistoryArticleManager.HistoryArticleList.isEmpty {
+        if (HistoryArticleManager.HistoryArticleList?.isEmpty)! {
             // 表示するデータがないことを表すせる表示するため1を返却
             return 1
         } else {
-            return HistoryArticleManager.HistoryArticleList.count
+            return HistoryArticleManager.HistoryArticleList!.count
         }
     }
     
@@ -54,7 +55,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if HistoryArticleManager.HistoryArticleList.isEmpty {
+        if (HistoryArticleManager.HistoryArticleList?.isEmpty)! {
              let cell = tableView.dequeueReusableCell(withIdentifier: NoDataTableViewCell.id, for: indexPath) as! NoDataTableViewCell
             
             return cell
@@ -62,7 +63,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.id, for: indexPath) as! ArticleTableViewCell
             
             // 選択したEtityを取得
-            let selectedEntity = HistoryArticleManager.HistoryArticleList[indexPath.row]
+            let selectedEntity = HistoryArticleManager.HistoryArticleList![indexPath.row]
             // ページタイトルをセルにセット
             cell.title.text = selectedEntity.title
             // サムネイルを設定
@@ -76,7 +77,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedEntity = HistoryArticleManager.HistoryArticleList[indexPath.row]
+        let selectedEntity = HistoryArticleManager.HistoryArticleList![indexPath.row]
         
         let url = URL(string: selectedEntity.url)
         let request = URLRequest(url: url!)
