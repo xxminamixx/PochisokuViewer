@@ -8,6 +8,8 @@
 
 import UIKit
 import Ji
+import Reachability
+import PopupDialog
 
 class HTMLParseManager {
     
@@ -17,9 +19,15 @@ class HTMLParseManager {
     /// 関連記事のEntityListを作成し返却
     ///
     /// - Returns: ArticleEntity配列を返却
-    static func relatedArticleEntityList(_ completion: () -> Void) -> [ArticleEntity] {
-        completion()
+    static func relatedArticleEntityList(_ completion: @escaping (Bool) -> Void) -> [ArticleEntity] {
+        // 通信がない場合ダイアログを表示してreturn
+        guard isreachable() else {
+            completion(false)
+            return []
+        }
+        completion(true)
         return HTMLParseManager.articleList(url: ConstText.pochisokuURL)
+        
     }
     
     
@@ -69,6 +77,20 @@ class HTMLParseManager {
         }
         
         return articleList
+    }
+    
+    
+    /// 現状の通信状態をBoolで返す
+    ///
+    /// - Returns: wifi及び携帯回線の場合true, 通信がない場合false
+    private static func isreachable() -> Bool {
+        let reachability = Reachability()!
+        switch reachability.connection {
+        case .wifi, .cellular:
+            return true
+        case .none:
+            return false
+        }
     }
     
 }

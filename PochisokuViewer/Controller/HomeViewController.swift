@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 import Ji
 import NVActivityIndicatorView
+import PopupDialog
 
 class HomeViewController: UIViewController {
     
@@ -26,7 +27,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         // 記事一覧を取得
-        relatedArticleList = HTMLParseManager.relatedArticleEntityList({})
+        relatedArticleList = HTMLParseManager.relatedArticleEntityList({_ in })
         
         // NavigationBarのタイトル設定
         self.navigationItem.title = ConstText.homeTitle
@@ -40,6 +41,7 @@ class HomeViewController: UIViewController {
         
         // TableViewにセルの登録
         tableView.register(UINib(nibName: ArticleTableViewCell.id, bundle: nil), forCellReuseIdentifier: ArticleTableViewCell.id)
+       tableView.register(UINib(nibName: NoDataTableViewCell.id, bundle: nil), forCellReuseIdentifier: NoDataTableViewCell.id)
         
     }
     
@@ -60,11 +62,24 @@ class HomeViewController: UIViewController {
     ///
     /// - Parameter sender: UIControl
     @objc func refresh(sender: UIControl) {
-        relatedArticleList = HTMLParseManager.relatedArticleEntityList({
-            // フェッチが終わったらテーブルビューを更新
-            tableView.reloadData()
-            // インジケータ表示を終了
-            refreshControl.endRefreshing()
+        relatedArticleList = HTMLParseManager.relatedArticleEntityList({ result in
+            
+            if result {
+                // フェッチが終わったらテーブルビューを更新
+                self.tableView.reloadData()
+                // インジケータ表示を終了
+                self.refreshControl.endRefreshing()
+            } else {
+                let popup = PopupDialog(title: ConstText.loadFailedTitle, message: ConstText.loadFailedMessage)
+                
+                let cancelButton = CancelButton(title: ConstText.close) {
+                    // ダイアログを閉じるだけなので特に処理なし
+                }
+                
+                popup.addButtons([cancelButton])
+                self.present(popup, animated: true, completion: nil)
+            }
+           
         })
     }
 
@@ -72,21 +87,36 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
+    // 表示するせるの個数を返す
+    private func numberOfRowsInSection() -> Int {
+        if (HistoryArticleManager.HistoryArticleList?.isEmpty)! {
+            // 表示するデータがないことを表すせる表示するため1を返却
+            return 1
+        } else {
+            return HistoryArticleManager.HistoryArticleList!.count
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return relatedArticleList.count
+        return numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.id, for: indexPath) as! ArticleTableViewCell
-        // ページタイトルをセルにセット
-        cell.title.text = relatedArticleList[indexPath.row].title
-        // TODO: サムネイルをセット
-        ImageFetcher.articleImage(cell: cell, url: relatedArticleList[indexPath.row].image)
-        
-        cell.setNeedsLayout()
-        cell.layoutIfNeeded()
-        
-        return cell
+        if relatedArticleList.isEmpty {
+            let cell = tableView.dequeueReusableCell(withIdentifier: NoDataTableViewCell.id, for: indexPath) as! NoDataTableViewCell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.id, for: indexPath) as! ArticleTableViewCell
+            // ページタイトルをセルにセット
+            cell.title.text = relatedArticleList[indexPath.row].title
+            // TODO: サムネイルをセット
+            ImageFetcher.articleImage(cell: cell, url: relatedArticleList[indexPath.row].image)
+            
+            cell.setNeedsLayout()
+            cell.layoutIfNeeded()
+            
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

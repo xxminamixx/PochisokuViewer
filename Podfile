@@ -11,5 +11,6 @@ target 'PochisokuViewer' do
   pod 'NVActivityIndicatorView', '~> 4.1.1'
   pod 'PopupDialog', '~> 0.7'
   pod 'RealmSwift', '~> 3.0.2'
+  pod 'ReachabilitySwift', '~> 4.1.0'
 
 end
