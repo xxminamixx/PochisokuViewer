@@ -27,7 +27,25 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         // 記事一覧を取得
-        relatedArticleList = HTMLParseManager.relatedArticleEntityList({_ in })
+        relatedArticleList = HTMLParseManager.relatedArticleEntityList({ result in
+            
+            if result {
+                
+            } else {
+                // インジケータ表示を終了
+                self.refreshControl.endRefreshing()
+                
+                let popup = PopupDialog(title: ConstText.loadFailedTitle, message: ConstText.loadFailedMessage)
+                
+                let cancelButton = CancelButton(title: ConstText.close) {
+                    // ダイアログを閉じるだけなので特に処理なし
+                }
+                
+                popup.addButtons([cancelButton])
+                self.present(popup, animated: true, completion: nil)
+            }
+            
+        })
         
         // NavigationBarのタイトル設定
         self.navigationItem.title = ConstText.homeTitle
@@ -70,6 +88,9 @@ class HomeViewController: UIViewController {
                 // インジケータ表示を終了
                 self.refreshControl.endRefreshing()
             } else {
+                // インジケータ表示を終了
+                self.refreshControl.endRefreshing()
+                
                 let popup = PopupDialog(title: ConstText.loadFailedTitle, message: ConstText.loadFailedMessage)
                 
                 let cancelButton = CancelButton(title: ConstText.close) {
@@ -89,11 +110,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     // 表示するせるの個数を返す
     private func numberOfRowsInSection() -> Int {
-        if (HistoryArticleManager.HistoryArticleList?.isEmpty)! {
+        if relatedArticleList.isEmpty {
             // 表示するデータがないことを表すせる表示するため1を返却
             return 1
         } else {
-            return HistoryArticleManager.HistoryArticleList!.count
+            return relatedArticleList.count
         }
     }
     
@@ -104,6 +125,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if relatedArticleList.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: NoDataTableViewCell.id, for: indexPath) as! NoDataTableViewCell
+            cell.label?.text = "記事の取得に失敗しました。"
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.id, for: indexPath) as! ArticleTableViewCell
@@ -137,7 +159,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         RealmStoreManager.addEntity(object: selectedEntity.self)
         
         // 閲覧した記事が50件以上ある場合最古のデータを削除
-        if RealmStoreManager.countEntity(type: ArticleEntity.self) > 50 {
+        if RealmStoreManager.countEntity(type: ArticleEntity.self) > 5 {
             let deleteObject = RealmStoreManager.entityList(type: ArticleEntity.self).sorted(byKeyPath: "date", ascending: false).last
             RealmStoreManager.delete(object: deleteObject!)
         }
@@ -150,7 +172,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height) {
             // 皿読み処理
-            relatedArticleList =  relatedArticleList + HTMLParseManager.addRelatedArticleEntityList()
+            relatedArticleList =  relatedArticleList + HTMLParseManager.addRelatedArticleEntityList({ result in
+                // TODO: 皿読み処理後にやりたいこと
+            })
             tableView.reloadData()
         }
     }

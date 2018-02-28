@@ -34,7 +34,13 @@ class HTMLParseManager {
     /// 皿読み時に次のページの記事を返す
     ///
     /// - Returns: 次のページのArticleEntity配列
-    static func addRelatedArticleEntityList() -> [ArticleEntity] {
+    static func addRelatedArticleEntityList(_ completion: (Bool) -> Void) -> [ArticleEntity] {
+        
+        guard isreachable() else {
+            completion(false)
+            return []
+        }
+        
         let currentpageJi = Ji(htmlURL: URL(string: currentPageURL)!)
         let nextPage = currentpageJi?.xPath("//a[@class='next page-numbers']")
         let nextPageURL = nextPage![0].attributes["href"] ?? ""
@@ -42,6 +48,7 @@ class HTMLParseManager {
         // 次の更に読みでどんどん次のページを読み込めるように更新
         currentPageURL = nextPageURL
         
+        completion(true)
         return HTMLParseManager.articleList(url: nextPageURL)
     }
     
