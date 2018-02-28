@@ -27,8 +27,6 @@ class HistoryViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // 永続化したデータを読み込んでおく
-        HistoryArticleManager.HistoryArticleList = RealmStoreManager.entityList(type: ArticleEntity.self).sorted(byKeyPath: "date", ascending: false)
         tableView.reloadData()
     }
 

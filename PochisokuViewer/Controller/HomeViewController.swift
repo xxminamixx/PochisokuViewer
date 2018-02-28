@@ -143,13 +143,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedEntity = relatedArticleList[indexPath.row]
-        let url = URL(string: selectedEntity.url)
-        let request = URLRequest(url: url!)
-        let webViewController = storyboard?.instantiateViewController(withIdentifier: WebViewController.id) as! WebViewController
-        webViewController.request = request
-        // 画面遷移してWebViewの表示
-        self.navigationController?.pushViewController(webViewController, animated: true)
-        
         // 選択した日付で上書き
         RealmStoreManager.save {
             selectedEntity.date = Date()
@@ -159,10 +152,20 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         RealmStoreManager.addEntity(object: selectedEntity.self)
         
         // 閲覧した記事が50件以上ある場合最古のデータを削除
-        if RealmStoreManager.countEntity(type: ArticleEntity.self) > 5 {
+        if RealmStoreManager.countEntity(type: ArticleEntity.self) > 50 {
             let deleteObject = RealmStoreManager.entityList(type: ArticleEntity.self).sorted(byKeyPath: "date", ascending: false).last
             RealmStoreManager.delete(object: deleteObject!)
+            
+            // 永続化したデータを読み込んでおく
+            HistoryArticleManager.HistoryArticleList = RealmStoreManager.entityList(type: ArticleEntity.self).sorted(byKeyPath: "date", ascending: false)
         }
+        
+        let url = URL(string: selectedEntity.url)
+        let request = URLRequest(url: url!)
+        let webViewController = storyboard?.instantiateViewController(withIdentifier: WebViewController.id) as! WebViewController
+        webViewController.request = request
+        // 画面遷移してWebViewの表示
+        self.navigationController?.pushViewController(webViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
