@@ -43,7 +43,7 @@ class HTMLParseManager {
         
         let currentpageJi = Ji(htmlURL: URL(string: currentPageURL)!)
         let nextPage = currentpageJi?.xPath("//a[@class='next page-numbers']")
-        let nextPageURL = nextPage![0].attributes["href"] ?? ""
+        let nextPageURL = nextPage?.first?.attributes["href"] ?? ""
         
         // 次の更に読みでどんどん次のページを読み込めるように更新
         currentPageURL = nextPageURL
@@ -59,7 +59,11 @@ class HTMLParseManager {
     /// - Returns: ArticleEntity配列
     private static func articleList(url: String) -> [ArticleEntity] {
         // ページのリクエスト
-        let pochisokuJi = Ji(htmlURL: URL(string: url)!)
+        guard let _url = URL(string: url) else {
+            return []
+        }
+        
+        let pochisokuJi = Ji(htmlURL: _url)
         // 関連記事のURLを含むタグ情報(これからhref値を抜き取りたい)
         let kanrenURL = pochisokuJi?.xPath(ConstText.kanrenURLXPath)
         // 関連記事のタイトルを含む情報(これからh3を抜き取りたい)

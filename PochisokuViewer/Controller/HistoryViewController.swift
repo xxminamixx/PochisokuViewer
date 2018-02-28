@@ -40,7 +40,13 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     // 表示するせるの個数を返す
     private func numberOfRowsInSection() -> Int {
-        if (HistoryArticleManager.HistoryArticleList?.isEmpty)! {
+        
+        guard let entity = HistoryArticleManager.HistoryArticleList else {
+            // アンラップできなかったら表示データなしとする   
+            return 1
+        }
+
+        if entity.isEmpty {
             // 表示するデータがないことを表すせる表示するため1を返却
             return 1
         } else {
