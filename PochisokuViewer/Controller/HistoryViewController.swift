@@ -59,11 +59,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (HistoryArticleManager.HistoryArticleList?.isEmpty)! {
-             let cell = tableView.dequeueReusableCell(withIdentifier: NoDataTableViewCell.id, for: indexPath) as! NoDataTableViewCell
-            
-            return cell
-        } else {
+        if let _ = HistoryArticleManager.HistoryArticleList {
             let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.id, for: indexPath) as! ArticleTableViewCell
             
             // 選択したEtityを取得
@@ -77,11 +73,21 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
             cell.layoutIfNeeded()
             
             return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: NoDataTableViewCell.id, for: indexPath) as! NoDataTableViewCell
+            
+            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedEntity = HistoryArticleManager.HistoryArticleList![indexPath.row]
+        
+        // 永続化されている閲覧記事がなかったら早期return
+        guard let history = HistoryArticleManager.HistoryArticleList else {
+            return
+        }
+        
+        let selectedEntity = history[indexPath.row]
         
         let url = URL(string: selectedEntity.url)
         let request = URLRequest(url: url!)

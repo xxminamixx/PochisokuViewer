@@ -142,6 +142,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // フェッチできずに記事がなかったら早期return
+        guard !relatedArticleList.isEmpty else {
+            return
+        }
+        
         let selectedEntity = relatedArticleList[indexPath.row]
         // 選択した日付で上書き
         RealmStoreManager.save {
