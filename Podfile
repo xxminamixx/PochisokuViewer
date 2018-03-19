@@ -12,5 +12,6 @@ target 'PochisokuViewer' do
   pod 'PopupDialog', '~> 0.7'
   pod 'RealmSwift', '~> 3.0.2'
   pod 'ReachabilitySwift', '~> 4.1.0'
+  pod 'XLPagerTabStrip', '~> 8.0'
 
 end
