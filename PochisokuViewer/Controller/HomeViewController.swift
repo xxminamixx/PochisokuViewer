@@ -11,9 +11,13 @@ import WebKit
 import Ji
 import NVActivityIndicatorView
 import PopupDialog
+import XLPagerTabStrip
 
 class HomeViewController: UIViewController {
     
+    var indicatorInfo: IndicatorInfo = "PUBG"
+    
+    static let id = "HomeViewController"
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -103,7 +107,7 @@ class HomeViewController: UIViewController {
            
         })
     }
-
+    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -188,4 +192,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+}
+
+extension HomeViewController: IndicatorInfoProvider {
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return indicatorInfo
+    }
 }

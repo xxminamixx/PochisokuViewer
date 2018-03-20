@@ -12,13 +12,13 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="PochisokuViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="PochisokuViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JHQ-X2-iUl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -55,6 +55,90 @@
             </objects>
             <point key="canvasLocation" x="1372" y="32.833583208395808"/>
         </scene>
+        <!--Fortnite View Controller-->
+        <scene sceneID="UcS-aP-1aw">
+            <objects>
+                <viewController storyboardIdentifier="FortniteViewController" id="ZCX-Fv-PHD" customClass="FortniteViewController" customModule="PochisokuViewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gZL-M3-TmK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZNb-u4-qfT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZNb-u4-qfT" firstAttribute="leading" secondItem="65I-Gw-VNV" secondAttribute="leading" id="MW5-00-WLk"/>
+                            <constraint firstItem="ZNb-u4-qfT" firstAttribute="top" secondItem="gZL-M3-TmK" secondAttribute="top" id="SuM-Fz-zeF"/>
+                            <constraint firstItem="ZNb-u4-qfT" firstAttribute="trailing" secondItem="65I-Gw-VNV" secondAttribute="trailing" id="YvK-6U-1Vh"/>
+                            <constraint firstItem="ZNb-u4-qfT" firstAttribute="bottom" secondItem="65I-Gw-VNV" secondAttribute="bottom" id="krr-02-7by"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="65I-Gw-VNV"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qQf-KA-8dx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-212" y="-695.80209895052474"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="t7C-H0-bNY">
+            <objects>
+                <viewController id="Lnx-8V-ktk" customClass="PageViewController" customModule="PochisokuViewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CaG-7X-QPt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6oC-g4-EhH" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="VNB-TZ-84k"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z2s-qS-IoN">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Gru-pb-yNo">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2UT-9l-d0U">
+                                <rect key="frame" x="0.0" y="108" width="375" height="510"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2UT-9l-d0U" firstAttribute="top" secondItem="6oC-g4-EhH" secondAttribute="bottom" id="2Fg-mN-jqu"/>
+                            <constraint firstItem="6oC-g4-EhH" firstAttribute="top" secondItem="RXh-t3-5Zo" secondAttribute="top" id="Aj7-Hp-3jM"/>
+                            <constraint firstItem="6oC-g4-EhH" firstAttribute="trailing" secondItem="RXh-t3-5Zo" secondAttribute="trailing" id="YgU-wZ-cbu"/>
+                            <constraint firstItem="2UT-9l-d0U" firstAttribute="bottom" secondItem="RXh-t3-5Zo" secondAttribute="bottom" id="h56-To-Wfd"/>
+                            <constraint firstItem="2UT-9l-d0U" firstAttribute="leading" secondItem="RXh-t3-5Zo" secondAttribute="leading" id="kwj-YM-9Qu"/>
+                            <constraint firstItem="6oC-g4-EhH" firstAttribute="leading" secondItem="RXh-t3-5Zo" secondAttribute="leading" id="ljC-qq-Jtx"/>
+                            <constraint firstItem="2UT-9l-d0U" firstAttribute="trailing" secondItem="RXh-t3-5Zo" secondAttribute="trailing" id="sFG-hR-bJA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RXh-t3-5Zo"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="oju-fx-BfB"/>
+                    <connections>
+                        <outlet property="buttonBarView" destination="6oC-g4-EhH" id="Frz-bH-ezG"/>
+                        <outlet property="containerView" destination="2UT-9l-d0U" id="7FG-B5-H5z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7KE-Fl-3sF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-212" y="32.833583208395808"/>
+        </scene>
         <!--記事一覧-->
         <scene sceneID="EWI-UA-lFy">
             <objects>
@@ -67,12 +151,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="NXL-EB-twq"/>
+                        <segue destination="Lnx-8V-ktk" kind="relationship" relationship="rootViewController" id="fcD-Js-OSI"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bok-2m-Lea" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-76" y="32.833583208395808"/>
+            <point key="canvasLocation" x="-1086" y="33"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="ddq-HO-Bgp">
@@ -111,6 +195,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="5It-rj-m67" customClass="TabBarViewController" customModule="PochisokuViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LrN-SW-Joi">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -121,7 +206,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHi-gp-j4j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1137" y="33"/>
+            <point key="canvasLocation" x="-1953" y="33"/>
         </scene>
         <!--閲覧履歴-->
         <scene sceneID="g6h-K2-ohZ">

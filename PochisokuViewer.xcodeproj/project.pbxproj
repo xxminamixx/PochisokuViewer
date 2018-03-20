@@ -16,6 +16,8 @@
 		6A63C170203CFCE9000DF18C /* NoDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C16E203CFCE9000DF18C /* NoDataTableViewCell.swift */; };
 		6A63C171203CFCE9000DF18C /* NoDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A63C16F203CFCE9000DF18C /* NoDataTableViewCell.xib */; };
 		6A63C173203E663E000DF18C /* RealmStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C172203E663E000DF18C /* RealmStoreManager.swift */; };
+		9D264AFC2061064D00449C7F /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D264AFB2061064D00449C7F /* PageViewController.swift */; };
+		9D264AFE20610AD900449C7F /* FortniteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D264AFD20610AD900449C7F /* FortniteViewController.swift */; };
 		9D478799203690D200A0957C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D478798203690D200A0957C /* AppDelegate.swift */; };
 		9D47879B203690D200A0957C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47879A203690D200A0957C /* HomeViewController.swift */; };
 		9D47879E203690D200A0957C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D47879C203690D200A0957C /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 		6A63C16E203CFCE9000DF18C /* NoDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataTableViewCell.swift; sourceTree = "<group>"; };
 		6A63C16F203CFCE9000DF18C /* NoDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoDataTableViewCell.xib; sourceTree = "<group>"; };
 		6A63C172203E663E000DF18C /* RealmStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStoreManager.swift; sourceTree = "<group>"; };
+		9D264AFB2061064D00449C7F /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		9D264AFD20610AD900449C7F /* FortniteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortniteViewController.swift; sourceTree = "<group>"; };
 		9D478795203690D200A0957C /* PochisokuViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PochisokuViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D478798203690D200A0957C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D47879A203690D200A0957C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -140,7 +144,9 @@
 			children = (
 				6A63C16C203CFBC8000DF18C /* TabBarViewController.swift */,
 				6A63C16420389807000DF18C /* NavigationController.swift */,
+				9D264AFB2061064D00449C7F /* PageViewController.swift */,
 				9D47879A203690D200A0957C /* HomeViewController.swift */,
+				9D264AFD20610AD900449C7F /* FortniteViewController.swift */,
 				9D5B7A5B2036D23100917F17 /* WebViewController.swift */,
 				6A63C168203CF237000DF18C /* HistoryViewController.swift */,
 			);
@@ -361,6 +367,8 @@
 				6A63C16D203CFBC9000DF18C /* TabBarViewController.swift in Sources */,
 				6A63C16520389807000DF18C /* NavigationController.swift in Sources */,
 				9D5B7A542036C88800917F17 /* ArticleEntity.swift in Sources */,
+				9D264AFC2061064D00449C7F /* PageViewController.swift in Sources */,
+				9D264AFE20610AD900449C7F /* FortniteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
