@@ -18,11 +18,17 @@ struct ConstText {
     
     // スクレイピングを開始するURL
     static let pochisokuURL = "https://pubg.jp"
+    static let tomatoURL = "http://fortnite.tips/"
     
     // MARK: XPath
     static let kanrenURLXPath = "//div[@id='st-magazine']/div/div/dl/a"
     static let kanrenTitleXPath = "//div[@id='st-magazine']/div/div/dl/dd/div/div/h3"
     static let kanrenImageXPath = "//div[@id='st-magazine']/div/div/dl/dt/img"
+    
+    static let fortniteArticleXPath = "//div[@id='list']/article"
+    static let fortniteURLXPath = "//div[@id='list']/article/figure/a"
+    static let fortniteTitleXPath = "//div[@id='list']/article/div/header/h2/a"
+    static let fortniteImageXPath = "//div[@id='list']/article/figure/a/img"
     
     // MARK: ダイアログ
     static let loadFailedTitle = "読み込みに失敗しました"

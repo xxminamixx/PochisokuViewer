@@ -104,4 +104,39 @@ class HTMLParseManager {
         }
     }
     
+    // MARK: FORTNITE
+    
+    
+    static func fortniteEntity(_ completion: (Bool) -> Void) -> [ArticleEntity] {
+        
+        guard let url = URL(string: ConstText.tomatoURL) else {
+            completion(false)
+            return []
+        }
+        
+        let fortnite = Ji(xmlURL: url)
+        let articleList = fortnite?.xPath(ConstText.fortniteArticleXPath)
+        print(articleList ?? "nil")
+        
+        // 関連記事のURLを含むタグ情報(これからhref値を抜き取りたい)
+        let kanrenURL = fortnite?.xPath(ConstText.fortniteURLXPath)
+        // 関連記事のタイトルを含む情報(これからh3を抜き取りたい)
+        let title = fortnite?.xPath(ConstText.fortniteTitleXPath)
+        // 関連記事のサムネイルURLを含む情報(これからsrc値を抜き取りたい)
+        let image = fortnite?.xPath(ConstText.fortniteImageXPath)
+        
+        var entityList: [ArticleEntity] = []
+        if let url = kanrenURL {
+            for i in 0 ..< url.count {
+                let article = ArticleEntity(_url: kanrenURL![i].attributes["href"]!, _title: title![i].attributes["title"]!, _image: image![i].attributes["src"]!, _date: Date())
+                 entityList.append(article)
+                print(article)
+            }
+        }
+        
+        completion(true)
+        return entityList
+       
+    }
+    
 }
