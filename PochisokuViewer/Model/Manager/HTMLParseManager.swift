@@ -81,7 +81,7 @@ class HTMLParseManager {
                 h3 = h3.replacingOccurrences(of: "\t", with: "")
                 h3 = h3.replacingOccurrences(of: "\n", with: "")
                 
-                let article = ArticleEntity(_url: kanrenURL![i].attributes["href"]!, _title: h3, _image: image![i].attributes["src"]!, _date: Date())
+                let article = ArticleEntity(_gameName: ConstText.pubg, _url: kanrenURL![i].attributes["href"]!, _title: h3, _image: image![i].attributes["src"]!, _date: Date())
                 
                 articleList.append(article)
             }
@@ -128,7 +128,7 @@ class HTMLParseManager {
         var entityList: [ArticleEntity] = []
         if let url = kanrenURL {
             for i in 0 ..< url.count {
-                let article = ArticleEntity(_url: kanrenURL![i].attributes["href"]!, _title: title![i].attributes["title"]!, _image: image![i].attributes["src"]!, _date: Date())
+                let article = ArticleEntity(_gameName: ConstText.fortnite, _url: kanrenURL![i].attributes["href"]!, _title: title![i].attributes["title"]!, _image: image![i].attributes["src"]!, _date: Date())
                  entityList.append(article)
                 print(article)
             }

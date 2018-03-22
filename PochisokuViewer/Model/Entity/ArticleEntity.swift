@@ -11,13 +11,16 @@ import RealmSwift
 
 class ArticleEntity: Object {
     
+    // 記事のフィルタリングに使う
+    @objc dynamic var gameName: String!
     @objc dynamic var url: String!
     @objc dynamic var title: String!
     @objc dynamic var image: String!
     @objc dynamic var date: Date!
     
-    convenience init(_url: String, _title: String, _image: String, _date: Date) {
+    convenience init(_gameName: String, _url: String, _title: String, _image: String, _date: Date) {
         self.init()
+        gameName = _gameName
         url = _url
         title = _title
         image = _image

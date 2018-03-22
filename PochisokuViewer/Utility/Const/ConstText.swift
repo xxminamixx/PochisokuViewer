@@ -14,6 +14,10 @@ import UIKit
 
 struct ConstText {
     
+    // MARK: 名前
+    static let pubg = "pubg"
+    static let fortnite  = "fortnite"
+    
     // MARK: URL
     
     // スクレイピングを開始するURL

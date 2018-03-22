@@ -50,6 +50,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
             // 表示するデータがないことを表すせる表示するため1を返却
             return 1
         } else {
+            // TODO: 今の所ごちゃまぜになる
             return HistoryArticleManager.HistoryArticleList!.count
         }
     }
