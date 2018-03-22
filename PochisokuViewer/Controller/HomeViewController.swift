@@ -15,9 +15,9 @@ import XLPagerTabStrip
 
 class HomeViewController: UIViewController {
     
-    var indicatorInfo: IndicatorInfo = "PUBG"
-    
-    static let id = "HomeViewController"
+//    var indicatorInfo: IndicatorInfo = "PUBG"
+//
+//    static var id = "HomeViewController"
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -192,10 +192,4 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-}
-
-extension HomeViewController: IndicatorInfoProvider {
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return indicatorInfo
-    }
 }
