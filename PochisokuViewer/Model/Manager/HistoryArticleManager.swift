@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class HistoryArticleManager: Object {
+class ArticleManager: Object {
     // 履歴保持用
     static var HistoryArticleList: Results<ArticleEntity>?
     // お気に入り保持用

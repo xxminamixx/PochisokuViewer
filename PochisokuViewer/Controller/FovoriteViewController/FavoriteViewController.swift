@@ -17,7 +17,7 @@ class FavoriteViewController: UIViewController {
         super.viewDidLoad()
         
         // お気に入り情報を保持
-        HistoryArticleManager.favoriteList = RealmStoreManager.filterEntityList(type: ArticleEntity.self, property: "isFavorite", filter: true)
+        ArticleManager.favoriteList = RealmStoreManager.filterEntityList(type: ArticleEntity.self, property: "isFavorite", filter: true)
         
         // tableViewのデリゲート設定
         tableView.delegate = self
@@ -37,10 +37,10 @@ class FavoriteViewController: UIViewController {
 extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     // 表示するせるの個数を返す
     private func numberOfRowsInSection() -> Int {
-        if (HistoryArticleManager.favoriteList?.isEmpty)! {
+        if (ArticleManager.favoriteList?.isEmpty)! {
             return 1
         } else {
-            return HistoryArticleManager.favoriteList!.count
+            return ArticleManager.favoriteList!.count
         }
     }
     
@@ -49,16 +49,16 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (HistoryArticleManager.favoriteList?.isEmpty)! {
+        if (ArticleManager.favoriteList?.isEmpty)! {
             let cell = tableView.dequeueReusableCell(withIdentifier: NoDataTableViewCell.id, for: indexPath) as! NoDataTableViewCell
             cell.label?.text = "記事の取得に失敗しました。"
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.id, for: indexPath) as! ArticleTableViewCell
             // ページタイトルをセルにセット
-            cell.title.text = HistoryArticleManager.favoriteList![indexPath.row].title
+            cell.title.text = ArticleManager.favoriteList![indexPath.row].title
             // TODO: サムネイルをセット
-            ImageFetcher.articleImage(cell: cell, url: HistoryArticleManager.favoriteList![indexPath.row].image)
+            ImageFetcher.articleImage(cell: cell, url: ArticleManager.favoriteList![indexPath.row].image)
             
             cell.setNeedsLayout()
             cell.layoutIfNeeded()

@@ -163,7 +163,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             RealmStoreManager.delete(object: deleteObject!)
             
             // 永続化したデータを読み込んでおく
-            HistoryArticleManager.HistoryArticleList = RealmStoreManager.entityList(type: ArticleEntity.self).sorted(byKeyPath: "date", ascending: false)
+            ArticleManager.HistoryArticleList = RealmStoreManager.entityList(type: ArticleEntity.self).sorted(byKeyPath: "date", ascending: false)
         }
         
         let webViewController = storyboard?.instantiateViewController(withIdentifier: WebViewController.id) as! WebViewController

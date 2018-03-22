@@ -41,7 +41,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     // 表示するせるの個数を返す
     private func numberOfRowsInSection() -> Int {
         
-        guard let entity = HistoryArticleManager.HistoryArticleList else {
+        guard let entity = ArticleManager.HistoryArticleList else {
             // アンラップできなかったら表示データなしとする   
             return 1
         }
@@ -51,7 +51,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
             return 1
         } else {
             // TODO: 今の所ごちゃまぜになる
-            return HistoryArticleManager.HistoryArticleList!.count
+            return ArticleManager.HistoryArticleList!.count
         }
     }
     
@@ -60,11 +60,11 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let _ = HistoryArticleManager.HistoryArticleList {
+        if let _ = ArticleManager.HistoryArticleList {
             let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.id, for: indexPath) as! ArticleTableViewCell
             
             // 選択したEtityを取得
-            let selectedEntity = HistoryArticleManager.HistoryArticleList![indexPath.row]
+            let selectedEntity = ArticleManager.HistoryArticleList![indexPath.row]
             // ページタイトルをセルにセット
             cell.title.text = selectedEntity.title
             // サムネイルを設定
@@ -84,7 +84,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // 永続化されている閲覧記事がなかったら早期return
-        guard let history = HistoryArticleManager.HistoryArticleList else {
+        guard let history = ArticleManager.HistoryArticleList else {
             return
         }
         
