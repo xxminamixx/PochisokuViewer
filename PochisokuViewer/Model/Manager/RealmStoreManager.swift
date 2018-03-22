@@ -63,6 +63,10 @@ class RealmStoreManager: Object {
         return entityList(type: type).filter("%K == %@", property, String(describing: filter))
     }
     
+    static func filterEntityList<T: Object>(type: T.Type, property: String, filter: Bool) -> Results<T> {
+        return entityList(type: type).filter("%K == %d", property, filter)
+    }
+    
     /// クロージャに更新処理を渡す
     ///
     /// - Parameter closure: 更新処理
