@@ -19,13 +19,20 @@ class WebViewController: UIViewController {
     
     var webview: WKWebView?
     var request: URLRequest?
-
+    var articleEntity: ArticleEntity?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // ローディング中のインジケータ初期設定
         let rect = CGRect(origin: CGPoint(x: self.view.frame.size.width / 2 - 25, y: self.view.frame.size.height / 2 - 25), size: CGSize(width: 50, height: 50))
         indicator = NVActivityIndicatorView(frame: rect, type: .ballScaleRipple, color: ConstColor.iconPink, padding: 10)
+        
+        // お気に入りボタン追加
+        let rightFavoriteButtonItem = UIBarButtonItem(title: "❤︎", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WebViewController.favorite))
+        self.navigationItem.setRightBarButtonItems([rightFavoriteButtonItem], animated: true)
+        
+        // TODO: お気に入り判定をして、お気に入りボタンの色を変更する
 
         // WKWebViewの初期設定
         webview = WKWebView()
@@ -41,16 +48,36 @@ class WebViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if let request = request {
-            // インジケータ表示
-            indicator?.startAnimating()
-            // webviewの表示
-            webview?.load(request)
+        // インジケータ表示
+        indicator?.startAnimating()
+        
+        guard let urlString = articleEntity?.url ,let url = URL(string: urlString) else {
+            // URLが空だったらエラーポップアップを表示したい
+            return
         }
+        // webviewの表示
+        webview?.load(URLRequest(url: url))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @objc func favorite() {
+        // TODO: お気に入りボタン押下時の処理
+        
+        if (self.articleEntity?.isFavorite)! {
+            // お気に入りされている
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        } else {
+            // お気に入りされていない
+            DispatchQueue.main.async {
+                RealmStoreManager.save {
+                    self.articleEntity?.isFavorite = true
+                }
+            }
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.red
+        }
     }
 
 }

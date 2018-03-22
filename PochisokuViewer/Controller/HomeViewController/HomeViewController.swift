@@ -15,10 +15,6 @@ import XLPagerTabStrip
 
 class HomeViewController: UIViewController {
     
-//    var indicatorInfo: IndicatorInfo = "PUBG"
-//
-//    static var id = "HomeViewController"
-    
     @IBOutlet weak var tableView: UITableView!
     
     // 新規記事取得時のインジケータに使用
@@ -170,10 +166,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             HistoryArticleManager.HistoryArticleList = RealmStoreManager.entityList(type: ArticleEntity.self).sorted(byKeyPath: "date", ascending: false)
         }
         
-        let url = URL(string: selectedEntity.url)
-        let request = URLRequest(url: url!)
         let webViewController = storyboard?.instantiateViewController(withIdentifier: WebViewController.id) as! WebViewController
-        webViewController.request = request
+        webViewController.articleEntity = selectedEntity
         // 画面遷移してWebViewの表示
         self.navigationController?.pushViewController(webViewController, animated: true)
     }

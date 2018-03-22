@@ -17,6 +17,7 @@ class ArticleEntity: Object {
     @objc dynamic var title: String!
     @objc dynamic var image: String!
     @objc dynamic var date: Date!
+    @objc dynamic var isFavorite = false
     
     convenience init(_gameName: String, _url: String, _title: String, _image: String, _date: Date) {
         self.init()
