@@ -141,8 +141,10 @@ extension FortniteViewController: UITableViewDelegate, UITableViewDataSource {
         
         let selectedEntity = relatedArticleList[indexPath.row]
         // 選択した日付で上書き
-        RealmStoreManager.save {
-            selectedEntity.date = Date()
+        DispatchQueue.main.async {
+            RealmStoreManager.save {
+                selectedEntity.date = Date()
+            }
         }
         
         // 閲覧した記事を永続化
