@@ -29,7 +29,7 @@ class WebViewController: UIViewController {
         indicator = NVActivityIndicatorView(frame: rect, type: .ballScaleRipple, color: ConstColor.iconPink, padding: 10)
         
         // お気に入りボタン追加
-        let rightFavoriteButtonItem = UIBarButtonItem(title: "❤︎", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WebViewController.favorite))
+        let rightFavoriteButtonItem = UIBarButtonItem.init(barButtonSystemItem: .bookmarks, target: self, action: #selector(WebViewController.favorite))
         self.navigationItem.setRightBarButtonItems([rightFavoriteButtonItem], animated: true)
         
         // TODO: お気に入り判定をして、お気に入りボタンの色を変更する
