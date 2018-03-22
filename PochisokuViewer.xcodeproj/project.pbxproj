@@ -146,12 +146,9 @@
 			children = (
 				6A63C16C203CFBC8000DF18C /* TabBarViewController.swift */,
 				6A63C16420389807000DF18C /* NavigationController.swift */,
-				9D264AFB2061064D00449C7F /* PageViewController.swift */,
-				9D47879A203690D200A0957C /* HomeViewController.swift */,
-				9DDCBA06206382BA0026A0C6 /* PUBGViewController.swift */,
-				9D264AFD20610AD900449C7F /* FortniteViewController.swift */,
-				9D5B7A5B2036D23100917F17 /* WebViewController.swift */,
-				6A63C168203CF237000DF18C /* HistoryViewController.swift */,
+				9DDCBA082063854E0026A0C6 /* HomeViewController */,
+				9DDCBA09206385730026A0C6 /* WebViewController */,
+				9DDCBA0A206385830026A0C6 /* HistoryViewController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -204,6 +201,33 @@
 				6A63C172203E663E000DF18C /* RealmStoreManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		9DDCBA082063854E0026A0C6 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9D264AFB2061064D00449C7F /* PageViewController.swift */,
+				9D47879A203690D200A0957C /* HomeViewController.swift */,
+				9DDCBA06206382BA0026A0C6 /* PUBGViewController.swift */,
+				9D264AFD20610AD900449C7F /* FortniteViewController.swift */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		9DDCBA09206385730026A0C6 /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9D5B7A5B2036D23100917F17 /* WebViewController.swift */,
+			);
+			path = WebViewController;
+			sourceTree = "<group>";
+		};
+		9DDCBA0A206385830026A0C6 /* HistoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6A63C168203CF237000DF18C /* HistoryViewController.swift */,
+			);
+			path = HistoryViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
