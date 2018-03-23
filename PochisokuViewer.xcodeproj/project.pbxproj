@@ -31,6 +31,9 @@
 		9D5B7A5C2036D23100917F17 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5B7A5B2036D23100917F17 /* WebViewController.swift */; };
 		9DDCBA07206382BA0026A0C6 /* PUBGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBA06206382BA0026A0C6 /* PUBGViewController.swift */; };
 		9DDCBA0E206394B10026A0C6 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBA0D206394B10026A0C6 /* FavoriteViewController.swift */; };
+		9DE32AE62065009F00D22DDD /* HistoryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE32AE52065009F00D22DDD /* HistoryPageViewController.swift */; };
+		9DE32AE82065034400D22DDD /* PUGBHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE32AE72065034400D22DDD /* PUGBHistoryViewController.swift */; };
+		9DE32AEA2065038000D22DDD /* FortniteHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE32AE92065038000D22DDD /* FortniteHistoryViewController.swift */; };
 		D594A390D2902C68AFE9B34D /* Pods_PochisokuViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306414A448D2F102156A5950 /* Pods_PochisokuViewer.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +65,9 @@
 		9D5B7A5B2036D23100917F17 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		9DDCBA06206382BA0026A0C6 /* PUBGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUBGViewController.swift; sourceTree = "<group>"; };
 		9DDCBA0D206394B10026A0C6 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		9DE32AE52065009F00D22DDD /* HistoryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPageViewController.swift; sourceTree = "<group>"; };
+		9DE32AE72065034400D22DDD /* PUGBHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUGBHistoryViewController.swift; sourceTree = "<group>"; };
+		9DE32AE92065038000D22DDD /* FortniteHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortniteHistoryViewController.swift; sourceTree = "<group>"; };
 		B3CF1C77A6981A489C878A97 /* Pods-PochisokuViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PochisokuViewer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PochisokuViewer/Pods-PochisokuViewer.debug.xcconfig"; sourceTree = "<group>"; };
 		E478B71A00BAE280103056F8 /* Pods-PochisokuViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PochisokuViewer.release.xcconfig"; path = "Pods/Target Support Files/Pods-PochisokuViewer/Pods-PochisokuViewer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,7 +234,10 @@
 		9DDCBA0A206385830026A0C6 /* HistoryViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9DE32AE52065009F00D22DDD /* HistoryPageViewController.swift */,
 				6A63C168203CF237000DF18C /* HistoryViewController.swift */,
+				9DE32AE72065034400D22DDD /* PUGBHistoryViewController.swift */,
+				9DE32AE92065038000D22DDD /* FortniteHistoryViewController.swift */,
 			);
 			path = HistoryViewController;
 			sourceTree = "<group>";
@@ -402,10 +411,13 @@
 				9D4787AF2036921E00A0957C /* ConstText.swift in Sources */,
 				9D5B7A5C2036D23100917F17 /* WebViewController.swift in Sources */,
 				9D478799203690D200A0957C /* AppDelegate.swift in Sources */,
+				9DE32AE82065034400D22DDD /* PUGBHistoryViewController.swift in Sources */,
 				6A63C170203CFCE9000DF18C /* NoDataTableViewCell.swift in Sources */,
+				9DE32AEA2065038000D22DDD /* FortniteHistoryViewController.swift in Sources */,
 				6A63C16D203CFBC9000DF18C /* TabBarViewController.swift in Sources */,
 				9DDCBA0E206394B10026A0C6 /* FavoriteViewController.swift in Sources */,
 				6A63C16520389807000DF18C /* NavigationController.swift in Sources */,
+				9DE32AE62065009F00D22DDD /* HistoryPageViewController.swift in Sources */,
 				9D5B7A542036C88800917F17 /* ArticleEntity.swift in Sources */,
 				9D264AFC2061064D00449C7F /* PageViewController.swift in Sources */,
 				9D264AFE20610AD900449C7F /* FortniteViewController.swift in Sources */,

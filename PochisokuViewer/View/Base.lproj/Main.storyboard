@@ -83,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQf-KA-8dx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-212" y="-695.80209895052474"/>
+            <point key="canvasLocation" x="673" y="-645"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="t7C-H0-bNY">
@@ -164,13 +164,13 @@
         <!--History View Controller-->
         <scene sceneID="ddq-HO-Bgp">
             <objects>
-                <viewController id="TYX-Q0-CKu" customClass="HistoryViewController" customModule="PochisokuViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PUGBHistoryViewController" id="TYX-Q0-CKu" customClass="PUGBHistoryViewController" customModule="PochisokuViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JTC-Xf-Rbq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eo9-hu-Nx5">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -190,7 +190,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kwg-F3-yvx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="673" y="807"/>
+            <point key="canvasLocation" x="673" y="806"/>
+        </scene>
+        <!--Fortnite History View Controller-->
+        <scene sceneID="p0P-tJ-0QM">
+            <objects>
+                <viewController storyboardIdentifier="FortniteHistoryViewController" id="dX6-Bz-Vi3" customClass="FortniteHistoryViewController" customModule="PochisokuViewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Au-0h-Jbq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QLC-8K-wJX">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Emb-0M-diE" firstAttribute="bottom" secondItem="QLC-8K-wJX" secondAttribute="bottom" id="YwF-Bb-ssU"/>
+                            <constraint firstItem="QLC-8K-wJX" firstAttribute="top" secondItem="Emb-0M-diE" secondAttribute="top" id="llv-9J-LDP"/>
+                            <constraint firstItem="Emb-0M-diE" firstAttribute="trailing" secondItem="QLC-8K-wJX" secondAttribute="trailing" id="rNw-1m-gLR"/>
+                            <constraint firstItem="QLC-8K-wJX" firstAttribute="leading" secondItem="Emb-0M-diE" secondAttribute="leading" id="vbD-YA-fVM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Emb-0M-diE"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableVIew" destination="QLC-8K-wJX" id="dBd-DD-ifD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l5O-VK-qJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1372" y="806"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="hBc-BR-oP0">
@@ -224,12 +254,28 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="TYX-Q0-CKu" kind="relationship" relationship="rootViewController" id="Aut-4c-pTY"/>
+                        <segue destination="TnQ-3N-oDz" kind="relationship" relationship="rootViewController" id="OUK-OL-oEs"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H9l-Q4-79R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-76.799999999999997" y="807.79610194902557"/>
+            <point key="canvasLocation" x="-1087" y="806"/>
+        </scene>
+        <!--History Page View Controller-->
+        <scene sceneID="BKq-EY-geN">
+            <objects>
+                <viewController id="TnQ-3N-oDz" customClass="HistoryPageViewController" customModule="PochisokuViewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rYd-g6-7fk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="0Kn-fD-uaW"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Bsf-ep-JUR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gtB-WF-YuG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-212" y="806"/>
         </scene>
         <!--Item-->
         <scene sceneID="tHB-cG-fMX">
@@ -246,7 +292,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0h-qi-osR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-78" y="1600"/>
+            <point key="canvasLocation" x="-1087" y="1633"/>
         </scene>
         <!--Favorite View Controller-->
         <scene sceneID="vfn-3T-nzs">
