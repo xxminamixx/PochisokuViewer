@@ -30,9 +30,10 @@ class WebViewController: UIViewController {
         
         // お気に入りボタン追加
         let rightFavoriteButtonItem = UIBarButtonItem.init(barButtonSystemItem: .bookmarks, target: self, action: #selector(WebViewController.favorite))
-        self.navigationItem.setRightBarButtonItems([rightFavoriteButtonItem], animated: true)
+        let rightShareButtonItem = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(WebViewController.share))
+        self.navigationItem.setRightBarButtonItems([rightFavoriteButtonItem, rightShareButtonItem], animated: true)
         
-        // TODO: お気に入り判定をして、お気に入りボタンの色を変更する
+        // TODO: お気に入り判定をして、お気に入りボタンの色を変更する!
 
         // WKWebViewの初期設定
         webview = WKWebView()
@@ -63,6 +64,7 @@ class WebViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    /// NavigationBarのブックマークボタン押下時呼ばれる
     @objc func favorite() {
         // TODO: お気に入りボタン押下時の処理
         
@@ -78,6 +80,18 @@ class WebViewController: UIViewController {
             }
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.red
         }
+    }
+    
+    /// NavigationBarのシェアボタン押下時に呼ばれる
+    @objc func share() {
+        let shareText = articleEntity?.title
+        // TODO: 強制アンラップを修正
+        let shareWebSite = URL(string: (articleEntity?.url)!)
+        let activityItems = [shareText, shareWebSite] as [Any]
+        /// ActivityViewController初期化
+        let activityViewController = UIActivityViewController.init(activityItems: activityItems, applicationActivities: nil)
+        /// ActivityViewController表示
+        self.present(activityViewController, animated: true, completion: nil)
     }
 
 }
