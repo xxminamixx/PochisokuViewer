@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
-class FavoriteViewController: UIViewController {
+class PUBGFavoriteViewController: UIViewController {
+    
+    static let id  = "PUBGFavoriteViewController"
+    
+    var indicatorInfo: IndicatorInfo = "PUBG"
     
     @IBOutlet weak var tableView: UITableView!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // お気に入り情報を保持
-        ArticleManager.favoriteList = RealmStoreManager.filterEntityList(type: ArticleEntity.self, property: "isFavorite", filter: true)
         
         // tableViewのデリゲート設定
         tableView.delegate = self
@@ -27,6 +28,12 @@ class FavoriteViewController: UIViewController {
         tableView.register(UINib(nibName: ArticleTableViewCell.id, bundle: nil), forCellReuseIdentifier: ArticleTableViewCell.id)
         tableView.register(UINib(nibName: NoDataTableViewCell.id, bundle: nil), forCellReuseIdentifier: NoDataTableViewCell.id)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -34,14 +41,15 @@ class FavoriteViewController: UIViewController {
 
 }
 
-extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
+extension PUBGFavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     // 表示するせるの個数を返す
     private func numberOfRowsInSection() -> Int {
-        if (ArticleManager.favoriteList?.isEmpty)! {
+        
+        guard ArticleManager.foavoriteListCount(gameTitle: .pubg) > 0  else {
             return 1
-        } else {
-            return ArticleManager.favoriteList!.count
         }
+        
+        return ArticleManager.foavoriteListCount(gameTitle: .pubg)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,22 +57,24 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (ArticleManager.favoriteList?.isEmpty)! {
+        
+        guard ArticleManager.foavoriteListCount(gameTitle: .pubg) > 0  else {
             let cell = tableView.dequeueReusableCell(withIdentifier: NoDataTableViewCell.id, for: indexPath) as! NoDataTableViewCell
             cell.label?.text = "記事の取得に失敗しました。"
             return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.id, for: indexPath) as! ArticleTableViewCell
-            // ページタイトルをセルにセット
-            cell.title.text = ArticleManager.favoriteList![indexPath.row].title
-            // TODO: サムネイルをセット
-            ImageFetcher.articleImage(cell: cell, url: ArticleManager.favoriteList![indexPath.row].image)
-            
-            cell.setNeedsLayout()
-            cell.layoutIfNeeded()
-            
-            return cell
         }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.id, for: indexPath) as! ArticleTableViewCell
+        // ページタイトルをセルにセット
+        // TODO: 強制アンラップ直したい
+        cell.title.text = ArticleManager.favoriteList(gameTitle: .pubg)![indexPath.row].title
+        // TODO: サムネイルをセット
+        ImageFetcher.articleImage(cell: cell, url: ArticleManager.favoriteList![indexPath.row].image)
+        
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -76,3 +86,8 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension PUBGFavoriteViewController: IndicatorInfoProvider {
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return indicatorInfo
+    }
+}

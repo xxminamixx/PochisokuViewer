@@ -279,50 +279,111 @@
         <!--Item-->
         <scene sceneID="tHB-cG-fMX">
             <objects>
-                <navigationController id="bGf-WU-4XC" sceneMemberID="viewController">
+                <navigationController id="bGf-WU-4XC" customClass="NavigationController" customModule="PochisokuViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="cCh-3h-Xez"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GwG-y9-g10">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="89O-Nc-GDg" kind="relationship" relationship="rootViewController" id="0Zk-XV-8ES"/>
+                        <segue destination="mcq-Ui-0oS" kind="relationship" relationship="rootViewController" id="M3X-4t-yNp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0h-qi-osR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1087" y="1633"/>
         </scene>
-        <!--Favorite View Controller-->
-        <scene sceneID="vfn-3T-nzs">
+        <!--Favorite Page View Controller-->
+        <scene sceneID="Doi-R9-eEd">
             <objects>
-                <viewController storyboardIdentifier="FavoriteViewController" id="89O-Nc-GDg" customClass="FavoriteViewController" customModule="PochisokuViewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ftq-9V-FBF">
+                <viewController id="mcq-Ui-0oS" customClass="FavoritePageViewController" customModule="PochisokuViewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1j2-v6-5mH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iCr-MK-q53">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFm-mb-bc8" customClass="BarView" customModule="XLPagerTabStrip">
+                                <rect key="frame" x="0.0" y="64" width="375" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="Wpv-FH-yCR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WFm-mb-bc8" firstAttribute="top" secondItem="wzi-zg-aVD" secondAttribute="top" id="16n-n1-iGa"/>
+                            <constraint firstItem="WFm-mb-bc8" firstAttribute="leading" secondItem="wzi-zg-aVD" secondAttribute="leading" id="IXu-mR-fRQ"/>
+                            <constraint firstItem="wzi-zg-aVD" firstAttribute="trailing" secondItem="WFm-mb-bc8" secondAttribute="trailing" id="zYG-hC-UOj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wzi-zg-aVD"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NBQ-Xn-qLj"/>
+                    <connections>
+                        <outlet property="barView" destination="WFm-mb-bc8" id="KtR-Wc-Q2W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="reP-q8-cKM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-212" y="1632.2338830584708"/>
+        </scene>
+        <!--Favorite View Controller-->
+        <scene sceneID="hdY-mi-hYP">
+            <objects>
+                <viewController storyboardIdentifier="PUBGFavoriteViewController" id="fYE-K0-X0C" customClass="PUBGFavoriteViewController" customModule="PochisokuViewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GtT-dh-U6d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dlx-jY-YAN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iCr-MK-q53" firstAttribute="bottom" secondItem="zRi-mV-df5" secondAttribute="bottom" id="1rz-f5-RbL"/>
-                            <constraint firstItem="iCr-MK-q53" firstAttribute="top" secondItem="zRi-mV-df5" secondAttribute="top" id="YaU-s6-guW"/>
-                            <constraint firstItem="iCr-MK-q53" firstAttribute="trailing" secondItem="zRi-mV-df5" secondAttribute="trailing" id="hcd-Zg-YWY"/>
-                            <constraint firstItem="iCr-MK-q53" firstAttribute="leading" secondItem="zRi-mV-df5" secondAttribute="leading" id="uYG-jD-uDa"/>
+                            <constraint firstItem="8MR-87-8l5" firstAttribute="trailing" secondItem="dlx-jY-YAN" secondAttribute="trailing" id="Hcd-fq-u4b"/>
+                            <constraint firstItem="8MR-87-8l5" firstAttribute="bottom" secondItem="dlx-jY-YAN" secondAttribute="bottom" id="bii-6C-SKz"/>
+                            <constraint firstItem="dlx-jY-YAN" firstAttribute="top" secondItem="GtT-dh-U6d" secondAttribute="top" id="cva-QA-MET"/>
+                            <constraint firstItem="dlx-jY-YAN" firstAttribute="leading" secondItem="8MR-87-8l5" secondAttribute="leading" id="otz-FF-Xvx"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="zRi-mV-df5"/>
+                        <viewLayoutGuide key="safeArea" id="8MR-87-8l5"/>
                     </view>
-                    <navigationItem key="navigationItem" id="BK6-e0-8Wi"/>
                     <connections>
-                        <outlet property="tableView" destination="iCr-MK-q53" id="vHQ-gc-zbS"/>
+                        <outlet property="tableView" destination="dlx-jY-YAN" id="3JG-V5-tQy"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eBx-nN-EPQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vHN-TS-R5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="672.79999999999995" y="1633.1334332833585"/>
+            <point key="canvasLocation" x="577" y="1645"/>
+        </scene>
+        <!--Fortnite Favorite View Controller-->
+        <scene sceneID="0Y1-cZ-Hiv">
+            <objects>
+                <viewController storyboardIdentifier="FortniteFavoriteViewController" id="KGW-jL-3pe" customClass="FortniteFavoriteViewController" customModule="PochisokuViewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JAM-QL-Bpn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8fw-hU-tQm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8fw-hU-tQm" firstAttribute="leading" secondItem="1Dp-e1-lTl" secondAttribute="leading" id="2Lc-Va-H5V"/>
+                            <constraint firstItem="1Dp-e1-lTl" firstAttribute="bottom" secondItem="8fw-hU-tQm" secondAttribute="bottom" id="Jp1-8f-Dxf"/>
+                            <constraint firstItem="8fw-hU-tQm" firstAttribute="trailing" secondItem="1Dp-e1-lTl" secondAttribute="trailing" id="Un5-Be-1He"/>
+                            <constraint firstItem="8fw-hU-tQm" firstAttribute="top" secondItem="JAM-QL-Bpn" secondAttribute="top" id="XeB-u8-vL6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1Dp-e1-lTl"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="8fw-hU-tQm" id="pW1-1r-rSd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u93-w7-vfB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="576.79999999999995" y="2316.7916041979011"/>
         </scene>
     </scenes>
     <resources>
