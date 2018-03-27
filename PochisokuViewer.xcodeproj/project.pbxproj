@@ -10,7 +10,6 @@
 		6A63C16320382F99000DF18C /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C16220382F99000DF18C /* ImageFetcher.swift */; };
 		6A63C16520389807000DF18C /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C16420389807000DF18C /* NavigationController.swift */; };
 		6A63C16720389918000DF18C /* ConstColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C16620389918000DF18C /* ConstColor.swift */; };
-		6A63C169203CF237000DF18C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C168203CF237000DF18C /* HistoryViewController.swift */; };
 		6A63C16B203CF403000DF18C /* HistoryArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C16A203CF403000DF18C /* HistoryArticleManager.swift */; };
 		6A63C16D203CFBC9000DF18C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C16C203CFBC8000DF18C /* TabBarViewController.swift */; };
 		6A63C170203CFCE9000DF18C /* NoDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A63C16E203CFCE9000DF18C /* NoDataTableViewCell.swift */; };
@@ -42,7 +41,6 @@
 		6A63C16220382F99000DF18C /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		6A63C16420389807000DF18C /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		6A63C16620389918000DF18C /* ConstColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstColor.swift; sourceTree = "<group>"; };
-		6A63C168203CF237000DF18C /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		6A63C16A203CF403000DF18C /* HistoryArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryArticleManager.swift; sourceTree = "<group>"; };
 		6A63C16C203CFBC8000DF18C /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		6A63C16E203CFCE9000DF18C /* NoDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataTableViewCell.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				9DE32AE52065009F00D22DDD /* HistoryPageViewController.swift */,
-				6A63C168203CF237000DF18C /* HistoryViewController.swift */,
 				9DE32AE72065034400D22DDD /* PUGBHistoryViewController.swift */,
 				9DE32AE92065038000D22DDD /* FortniteHistoryViewController.swift */,
 			);
@@ -407,7 +404,6 @@
 				6A63C16B203CF403000DF18C /* HistoryArticleManager.swift in Sources */,
 				9D47879B203690D200A0957C /* HomeViewController.swift in Sources */,
 				9D5B7A5A2036CF2300917F17 /* HTMLParseManager.swift in Sources */,
-				6A63C169203CF237000DF18C /* HistoryViewController.swift in Sources */,
 				9D4787AF2036921E00A0957C /* ConstText.swift in Sources */,
 				9D5B7A5C2036D23100917F17 /* WebViewController.swift in Sources */,
 				9D478799203690D200A0957C /* AppDelegate.swift in Sources */,

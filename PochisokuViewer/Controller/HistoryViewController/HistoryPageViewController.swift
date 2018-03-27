@@ -14,6 +14,9 @@ class HistoryPageViewController: TwitterPagerTabStripViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 履歴情報の読み込み
+        ArticleManager.HistoryArticleList = RealmStoreManager.filterEntityList(type: ArticleEntity.self, property: "isFavorite", filter: false)
+        
         settings.style.dotColor = UIColor(white: 1, alpha: 0.4)
         settings.style.selectedDotColor = UIColor.white
         settings.style.portraitTitleFont = UIFont.systemFont(ofSize: 18)
