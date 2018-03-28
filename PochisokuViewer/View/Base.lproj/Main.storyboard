@@ -300,26 +300,10 @@
                     <view key="view" contentMode="scaleToFill" id="1j2-v6-5mH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFm-mb-bc8" customClass="BarView" customModule="XLPagerTabStrip">
-                                <rect key="frame" x="0.0" y="64" width="375" height="10"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="Wpv-FH-yCR"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="WFm-mb-bc8" firstAttribute="top" secondItem="wzi-zg-aVD" secondAttribute="top" id="16n-n1-iGa"/>
-                            <constraint firstItem="WFm-mb-bc8" firstAttribute="leading" secondItem="wzi-zg-aVD" secondAttribute="leading" id="IXu-mR-fRQ"/>
-                            <constraint firstItem="wzi-zg-aVD" firstAttribute="trailing" secondItem="WFm-mb-bc8" secondAttribute="trailing" id="zYG-hC-UOj"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wzi-zg-aVD"/>
                     </view>
                     <navigationItem key="navigationItem" id="NBQ-Xn-qLj"/>
-                    <connections>
-                        <outlet property="barView" destination="WFm-mb-bc8" id="KtR-Wc-Q2W"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="reP-q8-cKM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

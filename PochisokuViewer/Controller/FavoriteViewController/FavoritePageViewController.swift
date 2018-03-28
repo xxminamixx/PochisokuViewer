@@ -9,7 +9,11 @@
 import UIKit
 import XLPagerTabStrip
 
-class FavoritePageViewController: BarPagerTabStripViewController {
+class FavoritePageViewController: TwitterPagerTabStripViewController {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +21,11 @@ class FavoritePageViewController: BarPagerTabStripViewController {
         // お気に入り情報を保持
         ArticleManager.favoriteList = RealmStoreManager.filterEntityList(type: ArticleEntity.self, property: "isFavorite", filter: true)
         
-        settings.style.selectedBarBackgroundColor = .orange
+        settings.style.dotColor = UIColor(white: 1, alpha: 0.4)
+        settings.style.selectedDotColor = UIColor.white
+        settings.style.portraitTitleFont = UIFont.systemFont(ofSize: 18)
+        settings.style.landscapeTitleFont = UIFont.systemFont(ofSize: 15)
+        settings.style.titleColor = UIColor.white
     }
 
     override func didReceiveMemoryWarning() {

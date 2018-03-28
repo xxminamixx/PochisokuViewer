@@ -20,6 +20,11 @@ class FortniteFavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.gray
+        
+        // NavigationBarのタイトル設定
+        self.navigationItem.title = ConstText.fortnite
+        
         tableView.delegate = self
         tableView.dataSource = self
         

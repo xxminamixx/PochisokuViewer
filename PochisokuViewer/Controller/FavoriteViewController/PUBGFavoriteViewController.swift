@@ -20,6 +20,9 @@ class PUBGFavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // NavigationBarのタイトル設定
+        self.navigationItem.title = ConstText.pubg
+        
         // tableViewのデリゲート設定
         tableView.delegate = self
         tableView.dataSource = self
@@ -75,6 +78,23 @@ extension PUBGFavoriteViewController: UITableViewDelegate, UITableViewDataSource
         cell.layoutIfNeeded()
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        guard ArticleManager.foavoriteListCount(gameTitle: .pubg) > 0  else {
+            return
+        }
+        
+        guard let articleEntityList = ArticleManager.favoriteList(gameTitle: .pubg) else {
+            return
+        }
+        
+        let webViewController = storyboard?.instantiateViewController(withIdentifier: WebViewController.id) as! WebViewController
+        webViewController.articleEntity = articleEntityList[indexPath.row]
+        // 画面遷移してWebViewの表示
+        self.navigationController?.pushViewController(webViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

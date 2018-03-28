@@ -27,8 +27,6 @@ class FortniteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        indicatorInfo = "Fortnite"
-        
         // NavigationBarのタイトル設定
         self.navigationItem.title = ConstText.homeTitle
         

@@ -115,8 +115,6 @@ class HTMLParseManager {
         }
         
         let fortnite = Ji(xmlURL: url)
-        let articleList = fortnite?.xPath(ConstText.fortniteArticleXPath)
-        print(articleList ?? "nil")
         
         // 関連記事のURLを含むタグ情報(これからhref値を抜き取りたい)
         let kanrenURL = fortnite?.xPath(ConstText.fortniteURLXPath)
@@ -130,13 +128,36 @@ class HTMLParseManager {
             for i in 0 ..< url.count {
                 let article = ArticleEntity(_gameName: ConstText.fortnite, _url: kanrenURL![i].attributes["href"]!, _title: title![i].attributes["title"]!, _image: image![i].attributes["src"]!, _date: Date())
                  entityList.append(article)
-                print(article)
             }
         }
         
         completion(true)
         return entityList
        
+    }
+    
+    /// 皿読み時に次のページの記事を返す
+    ///
+    /// - Returns: 次のページのArticleEntity配列
+    static func addFortniteArticleEntityList(_ completion: (Bool) -> Void) -> [ArticleEntity] {
+        
+        guard isreachable() else {
+            completion(false)
+            return []
+        }
+        
+        // TODO: Fortniteの次ページへのリンクをスクレーピングしないといけない
+        return [ArticleEntity()]
+        
+//        let currentpageJi = Ji(htmlURL: URL(string: currentPageURL)!)
+//        let nextPage = currentpageJi?.xPath("//a[@class='next page-numbers']")
+//        let nextPageURL = nextPage?.first?.attributes["href"] ?? ""
+//
+//        // 次の更に読みでどんどん次のページを読み込めるように更新
+//        currentPageURL = nextPageURL
+//
+//        completion(true)
+//        return HTMLParseManager.articleList(url: nextPageURL)
     }
     
 }

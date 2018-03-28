@@ -34,6 +34,16 @@ class WebViewController: UIViewController {
         self.navigationItem.setRightBarButtonItems([rightFavoriteButtonItem, rightShareButtonItem], animated: true)
         
         // TODO: お気に入り判定をして、お気に入りボタンの色を変更する!
+        if let isFavorite = self.articleEntity?.isFavorite {
+            if isFavorite {
+                // お気に入りされていたら
+                self.navigationItem.rightBarButtonItem?.tintColor = UIColor.yellow
+            } else {
+                // お気に入りされていなかったら
+                self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+            }
+        }
+
 
         // WKWebViewの初期設定
         webview = WKWebView()
@@ -71,6 +81,11 @@ class WebViewController: UIViewController {
         if (self.articleEntity?.isFavorite)! {
             // お気に入りされている
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+            DispatchQueue.main.async {
+                RealmStoreManager.save {
+                    self.articleEntity?.isFavorite = false
+                }
+            }
         } else {
             // お気に入りされていない
             DispatchQueue.main.async {
@@ -78,7 +93,7 @@ class WebViewController: UIViewController {
                     self.articleEntity?.isFavorite = true
                 }
             }
-            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.red
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.yellow
         }
     }
     

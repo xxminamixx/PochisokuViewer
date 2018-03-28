@@ -12,8 +12,8 @@ import RealmSwift
 class ArticleManager: Object {
     
     enum GameTitle: String {
-        case pubg =  "pubg"
-        case fortnite = "fortnite"
+        case pubg =  "PUBG"
+        case fortnite = "Fortnite"
     }
     
     // 履歴保持用
