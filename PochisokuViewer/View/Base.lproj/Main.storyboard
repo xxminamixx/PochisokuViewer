@@ -33,7 +33,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="iGb-Xn-lj5"/>
                     <connections>
-                        <outlet property="tableView" destination="JHQ-X2-iUl" id="4my-XF-lWf"/>
+                        <outlet property="tableView" destination="JHQ-X2-iUl" id="xXU-PK-gcK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -78,7 +78,7 @@
                         <viewLayoutGuide key="safeArea" id="65I-Gw-VNV"/>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="ZNb-u4-qfT" id="V2Z-QY-vWO"/>
+                        <outlet property="tableView" destination="ZNb-u4-qfT" id="WeH-oW-8HT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQf-KA-8dx" userLabel="First Responder" sceneMemberID="firstResponder"/>

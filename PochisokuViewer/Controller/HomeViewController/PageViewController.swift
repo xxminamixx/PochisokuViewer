@@ -28,8 +28,8 @@ class PageViewController: ButtonBarPagerTabStripViewController {
     
     override public func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         // ページビューで表示するViewControllerを生成
-        let pubg = self.storyboard?.instantiateViewController(withIdentifier: PUBGViewController.id) as! HomeViewController
-        let fortnite = self.storyboard?.instantiateViewController(withIdentifier: "FortniteViewController") as! FortniteViewController
+        let pubg = self.storyboard?.instantiateViewController(withIdentifier: PUBGViewController.id) as! PUBGViewController
+        let fortnite = self.storyboard?.instantiateViewController(withIdentifier: FortniteViewController.id) as! FortniteViewController
 
         return [pubg, fortnite]
     }

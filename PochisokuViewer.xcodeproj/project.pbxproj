@@ -18,7 +18,6 @@
 		9D264AFC2061064D00449C7F /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D264AFB2061064D00449C7F /* PageViewController.swift */; };
 		9D264AFE20610AD900449C7F /* FortniteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D264AFD20610AD900449C7F /* FortniteViewController.swift */; };
 		9D478799203690D200A0957C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D478798203690D200A0957C /* AppDelegate.swift */; };
-		9D47879B203690D200A0957C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47879A203690D200A0957C /* HomeViewController.swift */; };
 		9D47879E203690D200A0957C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D47879C203690D200A0957C /* Main.storyboard */; };
 		9D4787A0203690D200A0957C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D47879F203690D200A0957C /* Assets.xcassets */; };
 		9D4787A3203690D200A0957C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4787A1203690D200A0957C /* LaunchScreen.storyboard */; };
@@ -52,7 +51,6 @@
 		9D264AFD20610AD900449C7F /* FortniteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortniteViewController.swift; sourceTree = "<group>"; };
 		9D478795203690D200A0957C /* PochisokuViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PochisokuViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D478798203690D200A0957C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9D47879A203690D200A0957C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9D47879D203690D200A0957C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9D47879F203690D200A0957C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D4787A2203690D200A0957C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				9D264AFB2061064D00449C7F /* PageViewController.swift */,
-				9D47879A203690D200A0957C /* HomeViewController.swift */,
 				9DDCBA06206382BA0026A0C6 /* PUBGViewController.swift */,
 				9D264AFD20610AD900449C7F /* FortniteViewController.swift */,
 			);
@@ -409,7 +406,6 @@
 				9D522235206A2CB200251BE4 /* FavoritePageViewController.swift in Sources */,
 				6A63C173203E663E000DF18C /* RealmStoreManager.swift in Sources */,
 				6A63C16B203CF403000DF18C /* ArticleManager.swift in Sources */,
-				9D47879B203690D200A0957C /* HomeViewController.swift in Sources */,
 				9D5B7A5A2036CF2300917F17 /* HTMLParseManager.swift in Sources */,
 				9D4787AF2036921E00A0957C /* ConstText.swift in Sources */,
 				9D5B7A5C2036D23100917F17 /* WebViewController.swift in Sources */,
