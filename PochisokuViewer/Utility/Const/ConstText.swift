@@ -33,6 +33,8 @@ struct ConstText {
     static let fortniteTitleXPath = "//div[@id='list']/article/div/header/h2/a"
     static let fortniteImageXPath = "//div[@id='list']/article/figure/a/img"
     
+    static let tomatoNextPage = "//li[@class='next']/a"
+    
     // MARK: ダイアログ
     static let loadFailedTitle = "読み込みに失敗しました"
     static let loadFailedMessage = "通信環境をご確認の上再度お試しください"

@@ -15,6 +15,7 @@ class HTMLParseManager {
     
     // 現在表示しているページのURLを管理
     static var currentPageURL = ConstText.pochisokuURL
+    static var currentFortnitePageURL = ConstText.tomatoURL
     
     /// 関連記事のEntityListを作成し返却
     ///
@@ -107,9 +108,9 @@ class HTMLParseManager {
     // MARK: FORTNITE
     
     
-    static func fortniteEntity(_ completion: (Bool) -> Void) -> [ArticleEntity] {
+    static func fortniteEntity(url: String, _ completion: (Bool) -> Void) -> [ArticleEntity] {
         
-        guard let url = URL(string: ConstText.tomatoURL) else {
+        guard let url = URL(string: url) else {
             completion(false)
             return []
         }
@@ -146,18 +147,21 @@ class HTMLParseManager {
             return []
         }
         
-        // TODO: Fortniteの次ページへのリンクをスクレーピングしないといけない
-        return [ArticleEntity()]
+        guard let url = URL(string: currentFortnitePageURL) else {
+            completion(false)
+            return []
+        }
         
-//        let currentpageJi = Ji(htmlURL: URL(string: currentPageURL)!)
-//        let nextPage = currentpageJi?.xPath("//a[@class='next page-numbers']")
-//        let nextPageURL = nextPage?.first?.attributes["href"] ?? ""
-//
-//        // 次の更に読みでどんどん次のページを読み込めるように更新
-//        currentPageURL = nextPageURL
-//
-//        completion(true)
-//        return HTMLParseManager.articleList(url: nextPageURL)
+        let currentPageJi = Ji(htmlURL: url)
+        let nextPage = currentPageJi?.xPath(ConstText.tomatoNextPage)
+        let nextPageURL = nextPage?.first?.attributes["href"] ?? ""
+        
+        // 次の更に読みでどんどん次のページを読み込めるように更新
+        currentFortnitePageURL = nextPageURL
+        print(nextPageURL)
+        
+        completion(true)
+        return HTMLParseManager.fortniteEntity(url: nextPageURL, completion)
     }
     
 }

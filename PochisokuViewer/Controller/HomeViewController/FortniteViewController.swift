@@ -42,7 +42,7 @@ class FortniteViewController: UIViewController {
         tableView.register(UINib(nibName: NoDataTableViewCell.id, bundle: nil), forCellReuseIdentifier: NoDataTableViewCell.id)
         
         // 記事一覧を取得
-        relatedArticleList = HTMLParseManager.fortniteEntity({ result in
+        relatedArticleList = HTMLParseManager.fortniteEntity(url: ConstText.tomatoURL, { result in
 
             if result {
 
@@ -71,7 +71,7 @@ class FortniteViewController: UIViewController {
     ///
     /// - Parameter sender: UIControl
     @objc func refresh(sender: UIControl) {
-        relatedArticleList = HTMLParseManager.fortniteEntity({ result in
+        relatedArticleList = HTMLParseManager.fortniteEntity(url: ConstText.tomatoURL, { result in
             
             if result {
                 // フェッチが終わったらテーブルビューを更新
@@ -176,7 +176,7 @@ extension FortniteViewController: UITableViewDelegate, UITableViewDataSource {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height) {
             // 皿読み処理
-            relatedArticleList =  relatedArticleList + HTMLParseManager.addRelatedArticleEntityList({ result in
+            relatedArticleList =  relatedArticleList + HTMLParseManager.addFortniteArticleEntityList({ result in
                 // TODO: 皿読み処理後にやりたいこと
             })
             tableView.reloadData()
