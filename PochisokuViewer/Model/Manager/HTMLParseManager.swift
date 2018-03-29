@@ -91,49 +91,18 @@ class HTMLParseManager {
         return articleList
     }
     
-    
-    /// 現状の通信状態をBoolで返す
-    ///
-    /// - Returns: wifi及び携帯回線の場合true, 通信がない場合false
-    private static func isreachable() -> Bool {
-        let reachability = Reachability()!
-        switch reachability.connection {
-        case .wifi, .cellular:
-            return true
-        case .none:
-            return false
-        }
-    }
-    
     // MARK: FORTNITE
     
     
-    static func fortniteEntity(url: String, _ completion: (Bool) -> Void) -> [ArticleEntity] {
-        
-        guard let url = URL(string: url) else {
+    static func fortniteEntity(_ completion: (Bool) -> Void) -> [ArticleEntity] {
+        // 通信がない場合ダイアログを表示してreturn
+        guard isreachable() else {
             completion(false)
             return []
         }
         
-        let fortnite = Ji(xmlURL: url)
-        
-        // 関連記事のURLを含むタグ情報(これからhref値を抜き取りたい)
-        let kanrenURL = fortnite?.xPath(ConstText.fortniteURLXPath)
-        // 関連記事のタイトルを含む情報(これからh3を抜き取りたい)
-        let title = fortnite?.xPath(ConstText.fortniteTitleXPath)
-        // 関連記事のサムネイルURLを含む情報(これからsrc値を抜き取りたい)
-        let image = fortnite?.xPath(ConstText.fortniteImageXPath)
-        
-        var entityList: [ArticleEntity] = []
-        if let url = kanrenURL {
-            for i in 0 ..< url.count {
-                let article = ArticleEntity(_gameName: ConstText.fortnite, _url: kanrenURL![i].attributes["href"]!, _title: title![i].attributes["title"]!, _image: image![i].attributes["src"]!, _date: Date())
-                 entityList.append(article)
-            }
-        }
-        
         completion(true)
-        return entityList
+        return fortniteArticleList(url: ConstText.tomatoURL)
        
     }
     
@@ -161,7 +130,48 @@ class HTMLParseManager {
         print(nextPageURL)
         
         completion(true)
-        return HTMLParseManager.fortniteEntity(url: nextPageURL, completion)
+        return HTMLParseManager.fortniteArticleList(url: nextPageURL)
+    }
+    
+    private static func fortniteArticleList(url: String) -> [ArticleEntity] {
+        // ページのリクエスト
+        guard let url = URL(string: url) else {
+            return []
+        }
+        
+        let fortnite = Ji(xmlURL: url)
+        
+        // 関連記事のURLを含むタグ情報(これからhref値を抜き取りたい)
+        let kanrenURL = fortnite?.xPath(ConstText.fortniteURLXPath)
+        // 関連記事のタイトルを含む情報(これからh3を抜き取りたい)
+        let title = fortnite?.xPath(ConstText.fortniteTitleXPath)
+        // 関連記事のサムネイルURLを含む情報(これからsrc値を抜き取りたい)
+        let image = fortnite?.xPath(ConstText.fortniteImageXPath)
+        
+        var entityList: [ArticleEntity] = []
+        if let url = kanrenURL {
+            for i in 0 ..< url.count {
+                let article = ArticleEntity(_gameName: ConstText.fortnite, _url: kanrenURL![i].attributes["href"]!, _title: title![i].attributes["title"]!, _image: image![i].attributes["src"]!, _date: Date())
+                entityList.append(article)
+            }
+        }
+        
+        return entityList
+    }
+    
+    // MARK: Reachable
+    
+    /// 現状の通信状態をBoolで返す
+    ///
+    /// - Returns: wifi及び携帯回線の場合true, 通信がない場合false
+    private static func isreachable() -> Bool {
+        let reachability = Reachability()!
+        switch reachability.connection {
+        case .wifi, .cellular:
+            return true
+        case .none:
+            return false
+        }
     }
     
 }
